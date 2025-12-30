@@ -4,8 +4,7 @@ const portfolioData = [
     {
         id: 1,
         title: 'level up.',
-        tagline: 'Build essential interpersonal skills through bite-sized challenges and real-world experiences.',
-        description: 'Mobile app for building essential skills through curated experiences',
+        description: 'Build essential interpersonal skills through bite-sized experiences',
         tags: ['Mobile Product', 'User Research', 'UX Iteration & Testing'],
         image: 'images/levelup-new.png',
         specialLayout: true
@@ -13,8 +12,8 @@ const portfolioData = [
     {
         id: 2,
         title: 'Omnyra',
-        description: 'AI-native biosecurity platform',
-        tags: ['Product Design', 'Startup', 'AI', 'Biosecurity'],
+        description: 'AI-native infrastructure redefining U.S. biosecurity systems',
+        tags: ['Beneficiary Discovery', 'Lean Startup Methodology', 'Rapid Iteration'],
         image: 'images/omnyra-final (2).png',
         specialLayout: true
     }

@@ -25,8 +25,19 @@
             </svg>
         </a>
         <div class="project-detail-image-container">
-            <img src="images/levelup-new.png" alt="Level Up" class="project-detail-center-image">
+            <img src="images/levelup-new.png" alt="Level Up" id="portfolioMainImage" class="project-detail-center-image">
         </div>
+        <script>
+            // Update image based on URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const portfolioId = urlParams.get('id');
+            const mainImage = document.getElementById('portfolioMainImage');
+            
+            if (portfolioId === '2') {
+                mainImage.src = 'images/omnyra-final (4).jpeg';
+                mainImage.alt = 'Omnyra';
+            }
+        </script>
         <div class="project-detail-info-grid">
             <div class="project-detail-info-column">
                 <h3 class="project-detail-info-heading">ROLE</h3>
