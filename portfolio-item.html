@@ -27,18 +27,7 @@
         <div class="project-detail-image-container">
             <img src="images/levelup-new.png" alt="Level Up" id="portfolioMainImage" class="project-detail-center-image">
         </div>
-        <script>
-            // Update image based on URL parameter
-            const urlParams = new URLSearchParams(window.location.search);
-            const portfolioId = urlParams.get('id');
-            const mainImage = document.getElementById('portfolioMainImage');
-            
-            if (portfolioId === '2') {
-                mainImage.src = 'images/omnyra-final (4).jpeg';
-                mainImage.alt = 'Omnyra';
-            }
-        </script>
-        <div class="project-detail-info-grid">
+        <div class="project-detail-info-grid" id="projectInfoGrid">
             <div class="project-detail-info-column">
                 <h3 class="project-detail-info-heading">ROLE</h3>
                 <p class="project-detail-info-text">Full Stack Product Builder</p>
@@ -49,6 +38,7 @@
             </div>
             <div class="project-detail-info-column">
                 <h3 class="project-detail-info-heading">TEAM</h3>
+                <p class="project-detail-info-text">Varsha Saravanan</p>
                 <p class="project-detail-info-text">Taralyn Nguyen</p>
                 <p class="project-detail-info-text">Nick Pyun</p>
                 <p class="project-detail-info-text">Maroua Bezzaoui</p>
@@ -61,13 +51,17 @@
                 <p class="project-detail-info-text">Usability Testing</p>
             </div>
         </div>
+        <div id="levelUpContent">
         <h2 class="project-detail-overview-title">Overview</h2>
         <div class="project-detail-overview">
             <p class="project-detail-overview-text">Over 10 weeks, I worked with three Stanford product engineers and designers to explore how to design for healthy behaviors in high-achievement environments. Through needfinding interviews and synthesis, we found that students and early-career professionals struggle to build essential interpersonal skills that are rarely taught or practiced intentionally. This insight led us to level up., a mobile app that breaks interpersonal skill-building into bite-sized experiences, using daily challenges, social motivation, and progress tracking to support career growth.</p>
         </div>
-        <h2 class="project-detail-overview-title">User Personas</h2>
-        <div class="project-detail-image-container">
-            <img src="images/user personas3.png" alt="Needfinding Interviews" class="project-detail-center-image">
+        <h2 class="project-detail-overview-title">Needfinding Interviews</h2>
+        <div class="project-detail-image-wrapper">
+            <div class="project-detail-image-container">
+                <img src="images/user personas3.png" alt="Needfinding Interviews" class="project-detail-center-image">
+            </div>
+            <p class="project-detail-image-caption">Interview participants representing diverse life stages, career paths, and stress contexts.</p>
         </div>
         <div class="project-detail-overview">
             <p class="project-detail-overview-text">Through two rounds of needfinding interviews, we spoke with six participants across diverse ages, careers, and stress contexts, including students, early-career professionals, individuals between jobs, and a domain expert psychologist. Participants were recruited through local coffee shops or mutual connections, participated voluntarily without compensation, and were interviewed using open-ended questions to surface authentic routines, behaviors, and sources of stress.</p>
@@ -76,15 +70,17 @@
         <div class="project-detail-overview">
             <p class="project-detail-overview-text">To move from raw interviews to actionable insights, we translated our conversations into empathy maps for key personas. By mapping what participants <strong>said, thought, felt, and did</strong>, we surfaced patterns in how stress appeared in daily routines and decision-making, including tensions users struggled to articulate directly.</p>
         </div>
-        <div class="project-detail-images-row project-detail-empathy-maps">
-            <div class="project-detail-image-container">
-                <img src="images/Empathy Maps-1.jpeg" alt="Empathy Maps" class="project-detail-center-image">
+        <div class="project-detail-images-wrapper">
+            <div class="project-detail-images-row project-detail-empathy-maps">
+                <div class="project-detail-image-container">
+                    <img src="images/Empathy Maps-1.jpeg" alt="Empathy Maps" class="project-detail-center-image">
+                </div>
+                <div class="project-detail-image-container">
+                    <img src="images/empathy map-2.jpeg" alt="Empathy Maps" class="project-detail-center-image">
+                </div>
             </div>
-            <div class="project-detail-image-container">
-                <img src="images/empathy map-2.jpeg" alt="Empathy Maps" class="project-detail-center-image">
-            </div>
+            <p class="project-detail-image-caption">Empathy maps created for all interview participants; shown here are two representative examples.</p>
         </div>
-        
         <div class="project-detail-overview">
             <p class="project-detail-overview-text"><strong>Key patterns that emerged:</strong></p>
             <ul class="project-detail-overview-list">
@@ -95,68 +91,83 @@
             </ul>
         </div>
         <h2 class="project-detail-overview-title">User Personas</h2>
-        <div class="project-detail-images-row">
-            <div class="project-detail-image-container">
-                <img src="images/emi-1.jpeg" alt="Emi" class="project-detail-center-image">
+        <div class="project-detail-images-wrapper">
+            <div class="project-detail-images-row">
+                <div class="project-detail-image-container">
+                    <img src="images/emi-1.jpeg" alt="Emi" class="project-detail-center-image">
+                </div>
+                <div class="project-detail-image-container">
+                    <img src="images/danna-1.jpeg" alt="Danna" class="project-detail-center-image">
+                </div>
             </div>
-            <div class="project-detail-image-container">
-                <img src="images/danna-1.jpeg" alt="Danna" class="project-detail-center-image">
-            </div>
+            <p class="project-detail-image-caption">Select personas synthesized from interview insights to capture key tensions and unmet needs.</p>
         </div>
         <div class="project-detail-overview">
             <p class="project-detail-overview-text">We translated empathy maps into clear POV statements to articulate each user's core tension and unmet need, creating a shared foundation for ideation and problem framing.</p>
         </div>
         <h2 class="project-detail-overview-title">Framing the Design Opportunity</h2>
         <div class="project-detail-overview">
-            <p class="project-detail-overview-text">We generated multiple "How Might We" statements to explore the problem space from cultural, emotional, and behavioral angles. Through critique and iteration, we aligned on one guiding question that best captured the core user tension and opened the most actionable design space.</p>
+            <p class="project-detail-overview-text">We generated multiple “How Might We” statements to explore the problem space from cultural, emotional, and behavioral perspectives. Through critique and iteration, we evaluated these prompts based on their ability to capture core user tensions and open an actionable design space. This process allowed us to converge on a single guiding question that anchored subsequent ideation and design decisions.</p>
         </div>
-        <div class="project-detail-image-container">
-            <img src="images/HMW2.png" alt="How Might We" class="project-detail-center-image project-detail-image-small">
+        <div class="project-detail-image-wrapper">
+            <div class="project-detail-image-container">
+                <img src="images/HMW2.png" alt="How Might We" class="project-detail-center-image project-detail-image-small">
+            </div>
+            <p class="project-detail-image-caption">Select "How Might We" statements generated during framing; the bolded statement represents the direction we converged on.</p>
         </div>
         <h2 class="project-detail-overview-title">Testing Core Assumptions</h2>
         <div class="project-detail-overview">
             <p class="project-detail-overview-text">To explore how the chosen How Might We statement could translate into behavior change, we tested the assumption that users would follow through on unfamiliar or uncomfortable actions when the commitment required was intentionally low. We evaluated this through an experience prototype, focusing not on validating a polished product, but on observing whether users would take action when exploration felt low-stakes, concrete, and optional.</p>
         </div>
-        <div class="project-detail-images-row project-detail-images-large">
-            <div class="project-detail-image-container">
-                <img src="images/probandsoln.png" alt="Problem and Solution" class="project-detail-center-image">
+        <div class="project-detail-images-wrapper">
+            <div class="project-detail-images-row project-detail-images-large">
+                <div class="project-detail-image-container">
+                    <img src="images/probandsoln.png" alt="Problem and Solution" class="project-detail-center-image">
+                </div>
+                <div class="project-detail-image-container">
+                    <img src="images/takeaways.png" alt="Takeaways" class="project-detail-center-image">
+                </div>
             </div>
-            <div class="project-detail-image-container">
-                <img src="images/takeaways.png" alt="Takeaways" class="project-detail-center-image">
-            </div>
+            <p class="project-detail-image-caption">One of three experience prototypes tested to evaluate core behavioral assumptions.</p>
         </div>
         <div class="project-detail-overview">
             <p class="project-detail-overview-text">This prototype showed that while users were initially hesitant, lowering the commitment required to act helped them move past hesitation and follow through. More importantly, the signal was not task completion alone, but a shift in mindset: participants described increased confidence, curiosity, and willingness to engage with unfamiliar experiences.</p>
         </div>
         <h2 class="project-detail-overview-title">Defining the Problem and Solution</h2>
-        <div class="project-detail-problem-solution project-detail-images-large">
-            <div class="project-detail-image-container">
-                <img src="images/Problem.png" alt="Problem" class="project-detail-center-image">
+        <div class="project-detail-problem-solution-wrapper">
+            <div class="project-detail-problem-solution project-detail-images-large">
+                <div class="project-detail-image-container">
+                    <img src="images/Problem.png" alt="Problem" class="project-detail-center-image">
+                </div>
+                <div class="project-detail-arrow">
+                    <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="12" x2="90" y2="12" stroke="#667eea" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M90 18L100 12L90 6" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#667eea"/>
+                    </svg>
+                </div>
+                <div class="project-detail-image-container">
+                    <img src="images/Solution.png" alt="Solution" class="project-detail-center-image">
+                </div>
             </div>
-            <div class="project-detail-arrow">
-                <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="0" y1="12" x2="90" y2="12" stroke="#667eea" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M90 18L100 12L90 6" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#667eea"/>
-                </svg>
-            </div>
-            <div class="project-detail-image-container">
-                <img src="images/Solution.png" alt="Solution" class="project-detail-center-image">
-            </div>
+            <p class="project-detail-image-caption">Problem and solution refined through iterative needfinding, analysis, and assumption testing.</p>
         </div>
         <h2 class="project-detail-overview-title">Low-Fidelity Prototyping</h2>
         <div class="project-detail-overview">
             <p class="project-detail-overview-text">We explored multiple concepts in parallel and selected one direction to prototype more deeply. The emphasis was on creating clear entry points, lightweight commitment, and visible progress, without forcing users into rigid flows. The low-fidelity designs focus on structure and intent, not visual polish.</p>
         </div>
-        <div class="project-detail-images-row">
-            <div class="project-detail-image-container">
-                <img src="images/simple.png" alt="Simple" class="project-detail-center-image">
+        <div class="project-detail-images-wrapper">
+            <div class="project-detail-images-row">
+                <div class="project-detail-image-container">
+                    <img src="images/simple.png" alt="Simple" class="project-detail-center-image">
+                </div>
+                <div class="project-detail-image-container">
+                    <img src="images/moderate.png" alt="Moderate" class="project-detail-center-image">
+                </div>
             </div>
             <div class="project-detail-image-container">
-                <img src="images/moderate.png" alt="Moderate" class="project-detail-center-image">
+                <img src="images/complex.png" alt="Complex" class="project-detail-center-image">
             </div>
-        </div>
-        <div class="project-detail-image-container">
-            <img src="images/complex.png" alt="Complex" class="project-detail-center-image">
+            <p class="project-detail-image-caption">Low-fidelity sketches tested with users to assess friction and clarity across core flows.</p>
         </div>
         <div class="project-detail-overview">
             <p class="project-detail-overview-text">We tested the low-fidelity prototype with 8 users to understand how they experienced the core flows, from discovering a task, to tracking personal progress, to interacting with others. Rather than focusing on speed or efficiency, we paid attention to where users hesitated, felt motivated, or disengaged as the experience became more complex. This helped us identify which parts of the experience felt encouraging and low-pressure, and where additional structure or clarity was needed to maintain engagement.</p>
@@ -166,8 +177,11 @@
             <p class="project-detail-overview-text">Testing surfaced a consistent pattern: users were more willing to engage when the experience felt inviting and self-paced. Confusion or visual density quickly increased friction, even when the underlying idea resonated.</p>
             <p class="project-detail-overview-text">Social features worked best when they felt intentional and secondary to personal progress.</p>
         </div>
-        <div class="project-detail-image-container">
-            <img src="images/design changes.png" alt="Design Changes" class="project-detail-center-image">
+        <div class="project-detail-image-wrapper">
+            <div class="project-detail-image-container">
+                <img src="images/design changes.png" alt="Design Changes" class="project-detail-center-image">
+            </div>
+            <p class="project-detail-image-caption">User testing insights translated into concrete design decisions, shaping how users enter, progress through, and reflect within the experience.</p>
         </div>
         <div class="project-detail-overview">
             <p class="project-detail-overview-text">These insights led us to simplify entry points, reduce initial choice overload, and separate social interaction from core progression. The design shifted toward guiding users through action first, with reflection and connection layered in afterward.</p>
@@ -178,13 +192,16 @@
             <p class="project-detail-overview-text">With validated assumptions and refined structure, we moved into high-fidelity design to explore how visual hierarchy, interaction patterns, and feedback could reinforce motivation without increasing pressure. The goal at this stage was not visual polish alone, but to ensure the interface supported clarity, momentum, and emotional ease.</p>
             <p class="project-detail-overview-text">We completed two iterations of a high-fidelity prototype, using each round to address usability gaps uncovered through testing and critique. Early versions revealed friction around discoverability, task density, and unclear system feedback, even when users resonated with the concept itself.</p>
         </div>
-        <div class="project-detail-images-row project-detail-images-large">
-            <div class="project-detail-image-container">
-                <img src="images/h7.png" alt="High-Fidelity Design 1" class="project-detail-center-image">
+        <div class="project-detail-images-wrapper">
+            <div class="project-detail-images-row project-detail-images-large">
+                <div class="project-detail-image-container">
+                    <img src="images/h7.png" alt="High-Fidelity Design 1" class="project-detail-center-image">
+                </div>
+                <div class="project-detail-image-container">
+                    <img src="images/h11.png" alt="High-Fidelity Design 2" class="project-detail-center-image">
+                </div>
             </div>
-            <div class="project-detail-image-container">
-                <img src="images/h11.png" alt="High-Fidelity Design 2" class="project-detail-center-image">
-            </div>
+            <p class="project-detail-image-caption">Select examples from high-fidelity iterations and heuristic evaluation, highlighting how usability violations informed targeted design changes across the experience.</p>
         </div>
         <div class="project-detail-overview">
             <p class="project-detail-overview-text">Between high-fidelity iterations, we conducted a systematic heuristic review across the entire product experience. Evaluating the design against established usability principles allowed us to step back from individual screens and identify broader patterns that could undermine trust or engagement.</p>
@@ -201,18 +218,352 @@
         <div class="project-detail-overview">
             <p class="project-detail-overview-text">After refining the system through multiple iterations and heuristic review, we arrived at a version of the product that emphasizes flow over features. The high-fidelity prototype below demonstrates how users experience growth through action first, with progress and connection layered in naturally.</p>
         </div>
-        <div class="project-detail-images-row project-detail-flow-row">
-            <div class="project-detail-image-container project-detail-flow-one-scaled">
-                <img src="images/one-flow.png" alt="Flow 1" class="project-detail-center-image">
+        <div class="project-detail-images-wrapper">
+            <div class="project-detail-images-row project-detail-flow-row">
+                <div class="project-detail-image-container project-detail-flow-one-scaled">
+                    <img src="images/one-flow.png" alt="Flow 1" class="project-detail-center-image">
+                </div>
+                <div class="project-detail-image-container project-detail-flow-four-scaled">
+                    <img src="images/four-flow.png" alt="Flow 4" class="project-detail-center-image">
+                </div>
             </div>
-            <div class="project-detail-image-container project-detail-flow-four-scaled">
-                <img src="images/four-flow.png" alt="Flow 4" class="project-detail-center-image">
+            <div class="project-detail-image-container project-detail-flow-two-scaled">
+                <img src="images/two-flow.png" alt="Flow 2" class="project-detail-center-image">
             </div>
+            <p class="project-detail-image-caption">High-fidelity prototype illustrating three core flows: (1) Complete an experience by discovering a task, taking action, reflecting, and unlocking new experiences through completion (top left); (2) Track personal progress through a profile and progress view that surfaces skill growth over time (top right); (3) Challenge friends by optionally inviting others to complete the same experience through a lightweight, intentional social flow (bottom).</p>
         </div>
-        <div class="project-detail-image-container project-detail-flow-two-scaled">
-            <img src="images/two-flow.png" alt="Flow 2" class="project-detail-center-image">
+        </div>
+        <div id="omnyraContent" style="display: none;">
+            <div class="project-detail-overview">
+                <p class="project-detail-overview-text">Born out of Stanford's Hacking for Defense program, Omnyra began as an exploration into where modern biosecurity systems quietly fail as biological design becomes cheaper, faster, and more accessible. Through 130+ interviews across government agencies, gene synthesis companies, researchers, and policy experts, the team mapped real-world workflows, bottlenecks, and blind spots in existing screening approaches. Early assumptions were repeatedly challenged, leading to multiple pivots in both beneficiary focus and technical direction as we learned where intervention would matter most. These insights shaped Omnyra into an AI-native approach centered on function-aware risk detection rather than static, list-based screening. Over time, the project evolved from a research question into a systems-level effort focused on responsible deployment at national scale. What follows is a snapshot of Omnyra's initial 10-week needfinding and prototyping sprint.</p>
+            </div>
+            <div class="project-detail-pdf-container">
+                <div class="pdf-slideshow">
+                    <button class="slideshow-arrow slideshow-arrow-left" id="prevSlide" aria-label="Previous slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="slideshow-viewport">
+                        <canvas id="pdfCanvas" class="slideshow-canvas"></canvas>
+                    </div>
+                    <button class="slideshow-arrow slideshow-arrow-right" id="nextSlide" aria-label="Next slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="slideshow-indicator" id="slideIndicator">1 / 1</div>
+                </div>
+                <p class="slideshow-caption">Omnyra: Initial problem framing, beneficiary discovery, and MVP exploration developed during Stanford's Hacking for Defense program.</p>
+            </div>
+            <div class="project-detail-overview">
+                <p class="project-detail-overview-text">Since then, Omnyra was accepted into a startup accelerator supported by the Defense Innovation Unit, where the team moved quickly into rapid prototyping, built a functional MVP, and conducted early beta testing with stakeholders. In parallel, I co-authored a Nature Perspective titled "Generative AI for Biosciences: Emerging Threats and a Roadmap to Biosecurity" (currently in review), examining the biosecurity implications of generative AI and outlining technical and policy pathways forward. This work was developed in collaboration with leading experts in synthetic biology and AI, including George Church, Mengdi Wang, and Russ Altman. Together, these efforts reflect Omnyra's transition from early exploration to active engagement with both technical and policy communities shaping the future of biosecurity.</p>
+            </div>
+            <div class="project-detail-pdf-container">
+                <div class="pdf-slideshow">
+                    <button class="slideshow-arrow slideshow-arrow-left" id="prevSlidePaper" aria-label="Previous slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="slideshow-viewport">
+                        <canvas id="pdfCanvasPaper" class="slideshow-canvas"></canvas>
+                    </div>
+                    <button class="slideshow-arrow slideshow-arrow-right" id="nextSlidePaper" aria-label="Next slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="slideshow-indicator" id="slideIndicatorPaper">1 / 1</div>
+                </div>
+                <p class="slideshow-caption">Generative AI for Biosciences: Emerging Threats and a Roadmap to Biosecurity" — Nature Perspective (in review).</p>
+            </div>
         </div>
     </main>
+    
+    <!-- PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    
+    <script>
+        // Update image and info grid based on URL parameter
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const portfolioId = urlParams.get('id');
+            const mainImage = document.getElementById('portfolioMainImage');
+            const infoGrid = document.getElementById('projectInfoGrid');
+            const imageContainer = mainImage ? mainImage.closest('.project-detail-image-container') : null;
+            const levelUpContent = document.getElementById('levelUpContent');
+            const omnyraContent = document.getElementById('omnyraContent');
+            
+            if (portfolioId === '2') {
+                // Update image and add zoom class
+                mainImage.src = 'images/omnyra-final (4).jpeg';
+                mainImage.alt = 'Omnyra';
+                if (imageContainer) {
+                    imageContainer.classList.add('omnyra-image-zoom');
+                }
+                
+                // Update info grid for Omnyra
+                if (infoGrid) {
+                    const columns = infoGrid.querySelectorAll('.project-detail-info-column');
+                    if (columns.length >= 4) {
+                        // Update ROLE
+                        columns[0].querySelector('.project-detail-info-text').textContent = 'Co-founder & Head of Product';
+                        
+                        // Update TIMELINE
+                        columns[1].querySelector('.project-detail-info-text').textContent = 'Feb 2025 - Oct 2025';
+                        
+                        // Update TEAM
+                        const teamColumn = columns[2];
+                        const teamTexts = teamColumn.querySelectorAll('.project-detail-info-text');
+                        teamTexts[0].textContent = 'Varsha Saravanan';
+                        teamTexts[1].textContent = 'Emilin Mathew';
+                        teamTexts[2].textContent = 'Taralyn Nguyen';
+                        teamTexts[3].textContent = 'Stefan Thottunkal';
+                 
+                        
+                        // Update SKILLS
+                        const skillsColumn = columns[3];
+                        const skillsTexts = skillsColumn.querySelectorAll('.project-detail-info-text');
+                        skillsTexts[0].textContent = 'Beneficiary Discovery & Mapping';
+                        skillsTexts[1].textContent = 'Lean Startup Methodology';
+                        skillsTexts[2].textContent = 'Systems Thinking';
+                        skillsTexts[3].textContent = 'Rapid Iteration';
+                    }
+                }
+                
+                // Hide level up content and show omnyra content
+                if (levelUpContent) levelUpContent.style.display = 'none';
+                if (omnyraContent) omnyraContent.style.display = 'block';
+                
+                // Initialize PDF slideshows
+                initOmnyraSlideshows();
+            } else {
+                // Show level up content and hide omnyra content
+                if (levelUpContent) levelUpContent.style.display = 'block';
+                if (omnyraContent) omnyraContent.style.display = 'none';
+            }
+            
+            function initOmnyraSlideshows() {
+                if (typeof pdfjsLib === 'undefined') {
+                    setTimeout(initOmnyraSlideshows, 100);
+                    return;
+                }
+                
+                // Check if we're using file:// protocol
+                if (window.location.protocol === 'file:') {
+                    const indicator = document.getElementById('slideIndicator');
+                    const indicatorPaper = document.getElementById('slideIndicatorPaper');
+                    if (indicator) {
+                        indicator.textContent = 'Please use a local server (e.g., python -m http.server)';
+                        indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                    }
+                    if (indicatorPaper) {
+                        indicatorPaper.textContent = 'Please use a local server (e.g., python -m http.server)';
+                        indicatorPaper.style.background = 'rgba(220, 53, 69, 0.9)';
+                    }
+                    return;
+                }
+                
+                // Configure PDF.js worker
+                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+                
+                // Initialize first slideshow (Omnyra presentation)
+                initPDFSlideshow('images/_Omnyra - Final Presentation (PW).pdf', 'pdfCanvas', 'prevSlide', 'nextSlide', 'slideIndicator');
+                
+                // Initialize second slideshow (GenAI paper)
+                initPDFPaperSlideshow();
+            }
+            
+            function initPDFSlideshow(pdfUrl, canvasId, prevId, nextId, indicatorId) {
+                const canvas = document.getElementById(canvasId);
+                if (!canvas) return;
+                
+                const ctx = canvas.getContext('2d');
+                const prevBtn = document.getElementById(prevId);
+                const nextBtn = document.getElementById(nextId);
+                const indicator = document.getElementById(indicatorId);
+                
+                let pdfDoc = null;
+                let currentPage = 1;
+                let totalPages = 0;
+                let renderTask = null;
+                
+                function renderPage(pageNum) {
+                    if (!pdfDoc) return;
+                    
+                    if (renderTask) {
+                        renderTask.cancel();
+                    }
+                    
+                    pdfDoc.getPage(pageNum).then(page => {
+                        const viewport = page.getViewport({ scale: 2.0 });
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        
+                        const renderContext = {
+                            canvasContext: ctx,
+                            viewport: viewport
+                        };
+                        
+                        renderTask = page.render(renderContext);
+                        return renderTask.promise;
+                    }).then(() => {
+                        indicator.textContent = `${currentPage} / ${totalPages}`;
+                        prevBtn.disabled = currentPage <= 1;
+                        nextBtn.disabled = currentPage >= totalPages;
+                    }).catch(error => {
+                        if (error.name !== 'RenderingCancelledException') {
+                            console.error('Error rendering page:', error);
+                        }
+                    });
+                }
+                
+                prevBtn.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderPage(currentPage);
+                    }
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderPage(currentPage);
+                    }
+                });
+                
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft' && currentPage > 1) {
+                        currentPage--;
+                        renderPage(currentPage);
+                    } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
+                        currentPage++;
+                        renderPage(currentPage);
+                    }
+                });
+                
+                const loadingTask = pdfjsLib.getDocument({
+                    url: pdfUrl,
+                    httpHeaders: {},
+                    withCredentials: false
+                });
+                
+                loadingTask.promise.then(pdf => {
+                    pdfDoc = pdf;
+                    totalPages = pdf.numPages;
+                    indicator.textContent = `1 / ${totalPages}`;
+                    currentPage = 1;
+                    renderPage(1);
+                }).catch(error => {
+                    console.error('Error loading PDF:', error);
+                    indicator.textContent = 'Error loading presentation';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                });
+            }
+            
+            function initPDFPaperSlideshow() {
+                const pdfUrl = 'images/GenAI for Biosciences.pdf';
+                const canvas = document.getElementById('pdfCanvasPaper');
+                if (!canvas) return;
+                
+                const ctx = canvas.getContext('2d');
+                const prevBtn = document.getElementById('prevSlidePaper');
+                const nextBtn = document.getElementById('nextSlidePaper');
+                const indicator = document.getElementById('slideIndicatorPaper');
+                
+                let pdfDoc = null;
+                let currentPage = 1;
+                let totalPages = 0;
+                let renderTask = null;
+                
+                function renderPage(pageNum) {
+                    if (!pdfDoc) return;
+                    
+                    if (renderTask) {
+                        renderTask.cancel();
+                    }
+                    
+                    pdfDoc.getPage(pageNum).then(page => {
+                        const viewport = page.getViewport({ scale: 2.0 });
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        
+                        const renderContext = {
+                            canvasContext: ctx,
+                            viewport: viewport
+                        };
+                        
+                        renderTask = page.render(renderContext);
+                        return renderTask.promise;
+                    }).then(() => {
+                        indicator.textContent = `${currentPage} / ${totalPages}`;
+                        prevBtn.disabled = currentPage <= 1;
+                        nextBtn.disabled = currentPage >= totalPages;
+                    }).catch(error => {
+                        if (error.name !== 'RenderingCancelledException') {
+                            console.error('Error rendering page:', error);
+                        }
+                    });
+                }
+                
+                prevBtn.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderPage(currentPage);
+                    }
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderPage(currentPage);
+                    }
+                });
+                
+                const handleKeydown = (e) => {
+                    const paperSlideshow = document.getElementById('pdfCanvasPaper');
+                    if (paperSlideshow && paperSlideshow.offsetParent !== null) {
+                        const rect = paperSlideshow.getBoundingClientRect();
+                        if (rect.top < window.innerHeight && rect.bottom > 0) {
+                            if (e.key === 'ArrowLeft' && currentPage > 1) {
+                                e.preventDefault();
+                                currentPage--;
+                                renderPage(currentPage);
+                            } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
+                                e.preventDefault();
+                                currentPage++;
+                                renderPage(currentPage);
+                            }
+                        }
+                    }
+                };
+                
+                if (!window.paperKeyboardListenerAdded) {
+                    document.addEventListener('keydown', handleKeydown);
+                    window.paperKeyboardListenerAdded = true;
+                }
+                
+                const loadingTask = pdfjsLib.getDocument({
+                    url: pdfUrl,
+                    httpHeaders: {},
+                    withCredentials: false
+                });
+                
+                loadingTask.promise.then(pdf => {
+                    pdfDoc = pdf;
+                    totalPages = pdf.numPages;
+                    indicator.textContent = `1 / ${totalPages}`;
+                    currentPage = 1;
+                    renderPage(1);
+                }).catch(error => {
+                    console.error('Error loading PDF:', error);
+                    indicator.textContent = 'Error loading paper';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
 

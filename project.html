@@ -24,7 +24,356 @@
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </a>
+        <div class="project-detail-image-container">
+            <img src="images/omnyra-final (4).jpeg" alt="Omnyra" id="projectMainImage" class="project-detail-center-image">
+        </div>
+        <div class="project-detail-info-grid" id="projectInfoGrid">
+            <div class="project-detail-info-column">
+                <h3 class="project-detail-info-heading">ROLE</h3>
+                <p class="project-detail-info-text">Co-founder & Head of Product</p>
+            </div>
+            <div class="project-detail-info-column">
+                <h3 class="project-detail-info-heading">TIMELINE</h3>
+                <p class="project-detail-info-text">Feb 2025 - Oct 2025</p>
+            </div>
+            <div class="project-detail-info-column">
+                <h3 class="project-detail-info-heading">TEAM</h3>
+                <p class="project-detail-info-text">Varsha Saravanan</p>
+                <p class="project-detail-info-text">Emilin Mathew</p>
+            </div>
+            <div class="project-detail-info-column">
+                <h3 class="project-detail-info-heading">SKILLS</h3>
+                <p class="project-detail-info-text">Beneficiary Discovery & Mapping</p>
+                <p class="project-detail-info-text">Lean Startup Methodology</p>
+                <p class="project-detail-info-text">Systems Thinking</p>
+                <p class="project-detail-info-text">Rapid Iteration</p>
+            </div>
+        </div>
+        <div class="project-detail-overview">
+            <p class="project-detail-overview-text">Born out of Stanford's Hacking for Defense program, Omnyra began as an exploration into where modern biosecurity systems quietly fail as biological design becomes cheaper, faster, and more accessible. Through 130+ interviews across government agencies, gene synthesis companies, researchers, and policy experts, the team mapped real-world workflows, bottlenecks, and blind spots in existing screening approaches. Early assumptions were repeatedly challenged, leading to multiple pivots in both beneficiary focus and technical direction as we learned where intervention would matter most. These insights shaped Omnyra into an AI-native approach centered on function-aware risk detection rather than static, list-based screening. Over time, the project evolved from a research question into a systems-level effort focused on responsible deployment at national scale. What follows is a snapshot of Omnyra's initial 10-week needfinding and prototyping sprint.</p>
+        </div>
+        <div class="project-detail-pdf-container">
+            <div class="pdf-slideshow">
+                <button class="slideshow-arrow slideshow-arrow-left" id="prevSlide" aria-label="Previous slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="slideshow-viewport">
+                    <canvas id="pdfCanvas" class="slideshow-canvas"></canvas>
+                </div>
+                <button class="slideshow-arrow slideshow-arrow-right" id="nextSlide" aria-label="Next slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="slideshow-indicator" id="slideIndicator">1 / 1</div>
+            </div>
+            <p class="slideshow-caption">Omnyra: Initial problem framing, beneficiary discovery, and MVP exploration developed during Stanford's Hacking for Defense program.</p>
+        </div>
+        <div class="project-detail-overview">
+            <p class="project-detail-overview-text">Since then, Omnyra was accepted into a startup accelerator supported by the Defense Innovation Unit, where the team moved quickly into rapid prototyping, built a functional MVP, and conducted early beta testing with stakeholders. In parallel, I co-authored a Nature Perspective titled "Generative AI for Biosciences: Emerging Threats and a Roadmap to Biosecurity" (currently in review), examining the biosecurity implications of generative AI and outlining technical and policy pathways forward. This work was developed in collaboration with leading experts in synthetic biology and AI, including George Church, Mengdi Wang, and Russ Altman. Together, these efforts reflect Omnyra's transition from early exploration to active engagement with both technical and policy communities shaping the future of biosecurity.</p>
+        </div>
+        <div class="project-detail-pdf-container">
+            <div class="pdf-slideshow">
+                <button class="slideshow-arrow slideshow-arrow-left" id="prevSlidePaper" aria-label="Previous slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="slideshow-viewport">
+                    <canvas id="pdfCanvasPaper" class="slideshow-canvas"></canvas>
+                </div>
+                <button class="slideshow-arrow slideshow-arrow-right" id="nextSlidePaper" aria-label="Next slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="slideshow-indicator" id="slideIndicatorPaper">1 / 1</div>
+            </div>
+            <p class="slideshow-caption">Generative AI for Biosciences: Emerging Threats and a Roadmap to Biosecurity" — Nature Perspective (in review).</p>
+        </div>
     </main>
+    
+    <!-- PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply zoom class to Omnyra image
+            const mainImage = document.getElementById('projectMainImage');
+            const imageContainer = mainImage ? mainImage.closest('.project-detail-image-container') : null;
+            
+            if (imageContainer) {
+                imageContainer.classList.add('omnyra-image-zoom');
+            }
+            
+            // Wait for PDF.js to load
+            function initPDFSlideshow() {
+                if (typeof pdfjsLib === 'undefined') {
+                    setTimeout(initPDFSlideshow, 100);
+                    return;
+                }
+                
+                // Check if we're using file:// protocol (won't work with PDF.js)
+                if (window.location.protocol === 'file:') {
+                    const indicator = document.getElementById('slideIndicator');
+                    if (indicator) {
+                        indicator.textContent = 'Please use a local server (e.g., python -m http.server)';
+                        indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                    }
+                    return;
+                }
+                
+                // Configure PDF.js worker
+                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+                
+                // Initialize PDF slideshow - use relative path (no encoding needed for relative paths)
+                const pdfUrl = 'images/_Omnyra - Final Presentation (PW).pdf';
+                const canvas = document.getElementById('pdfCanvas');
+                if (!canvas) return;
+                
+                const ctx = canvas.getContext('2d');
+                const prevBtn = document.getElementById('prevSlide');
+                const nextBtn = document.getElementById('nextSlide');
+                const indicator = document.getElementById('slideIndicator');
+                
+                let pdfDoc = null;
+                let currentPage = 1;
+                let totalPages = 0;
+                let renderTask = null;
+                
+                // Render a specific page
+                function renderPage(pageNum) {
+                    if (!pdfDoc) return;
+                    
+                    // Cancel previous render task if it exists
+                    if (renderTask) {
+                        renderTask.cancel();
+                    }
+                    
+                    pdfDoc.getPage(pageNum).then(page => {
+                        const viewport = page.getViewport({ scale: 2.0 });
+                        
+                        // Set canvas dimensions
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        
+                        // Render PDF page
+                        const renderContext = {
+                            canvasContext: ctx,
+                            viewport: viewport
+                        };
+                        
+                        renderTask = page.render(renderContext);
+                        return renderTask.promise;
+                    }).then(() => {
+                        // Update indicator
+                        indicator.textContent = `${currentPage} / ${totalPages}`;
+                        
+                        // Update button states
+                        prevBtn.disabled = currentPage <= 1;
+                        nextBtn.disabled = currentPage >= totalPages;
+                    }).catch(error => {
+                        if (error.name !== 'RenderingCancelledException') {
+                            console.error('Error rendering page:', error);
+                        }
+                    });
+                }
+                
+                // Navigation handlers
+                prevBtn.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderPage(currentPage);
+                    }
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderPage(currentPage);
+                    }
+                });
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft' && currentPage > 1) {
+                        currentPage--;
+                        renderPage(currentPage);
+                    } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
+                        currentPage++;
+                        renderPage(currentPage);
+                    }
+                });
+                
+                // Load PDF
+                const loadingTask = pdfjsLib.getDocument({
+                    url: pdfUrl,
+                    httpHeaders: {},
+                    withCredentials: false
+                });
+                
+                loadingTask.promise.then(pdf => {
+                    pdfDoc = pdf;
+                    totalPages = pdf.numPages;
+                    indicator.textContent = `1 / ${totalPages}`;
+                    currentPage = 1;
+                    renderPage(1);
+                }).catch(error => {
+                    console.error('Error loading PDF:', error);
+                    console.error('PDF URL:', pdfUrl);
+                    console.error('Error message:', error.message);
+                    console.error('Error name:', error.name);
+                    indicator.textContent = 'Error loading presentation';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                });
+            }
+            
+            // Initialize the first slideshow (Omnyra presentation)
+            initPDFSlideshow();
+            
+            // Initialize the second slideshow (GenAI paper)
+            function initPDFPaperSlideshow() {
+                if (typeof pdfjsLib === 'undefined') {
+                    setTimeout(initPDFPaperSlideshow, 100);
+                    return;
+                }
+                
+                // Check if we're using file:// protocol (won't work with PDF.js)
+                if (window.location.protocol === 'file:') {
+                    const indicator = document.getElementById('slideIndicatorPaper');
+                    if (indicator) {
+                        indicator.textContent = 'Please use a local server (e.g., python -m http.server)';
+                        indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                    }
+                    return;
+                }
+                
+                // Configure PDF.js worker (already configured, but ensure it's set)
+                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+                
+                // Initialize PDF slideshow for the paper
+                const pdfUrl = 'images/GenAI for Biosciences.pdf';
+                const canvas = document.getElementById('pdfCanvasPaper');
+                if (!canvas) return;
+                
+                const ctx = canvas.getContext('2d');
+                const prevBtn = document.getElementById('prevSlidePaper');
+                const nextBtn = document.getElementById('nextSlidePaper');
+                const indicator = document.getElementById('slideIndicatorPaper');
+                
+                let pdfDoc = null;
+                let currentPage = 1;
+                let totalPages = 0;
+                let renderTask = null;
+                
+                // Render a specific page
+                function renderPage(pageNum) {
+                    if (!pdfDoc) return;
+                    
+                    // Cancel previous render task if it exists
+                    if (renderTask) {
+                        renderTask.cancel();
+                    }
+                    
+                    pdfDoc.getPage(pageNum).then(page => {
+                        const viewport = page.getViewport({ scale: 2.0 });
+                        
+                        // Set canvas dimensions
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        
+                        // Render PDF page
+                        const renderContext = {
+                            canvasContext: ctx,
+                            viewport: viewport
+                        };
+                        
+                        renderTask = page.render(renderContext);
+                        return renderTask.promise;
+                    }).then(() => {
+                        // Update indicator
+                        indicator.textContent = `${currentPage} / ${totalPages}`;
+                        
+                        // Update button states
+                        prevBtn.disabled = currentPage <= 1;
+                        nextBtn.disabled = currentPage >= totalPages;
+                    }).catch(error => {
+                        if (error.name !== 'RenderingCancelledException') {
+                            console.error('Error rendering page:', error);
+                        }
+                    });
+                }
+                
+                // Navigation handlers
+                prevBtn.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderPage(currentPage);
+                    }
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderPage(currentPage);
+                    }
+                });
+                
+                // Keyboard navigation (only when this slideshow is focused)
+                const handleKeydown = (e) => {
+                    const paperSlideshow = document.getElementById('pdfCanvasPaper');
+                    if (paperSlideshow && paperSlideshow.offsetParent !== null) {
+                        // Check if paper slideshow is visible
+                        const rect = paperSlideshow.getBoundingClientRect();
+                        if (rect.top < window.innerHeight && rect.bottom > 0) {
+                            if (e.key === 'ArrowLeft' && currentPage > 1) {
+                                e.preventDefault();
+                                currentPage--;
+                                renderPage(currentPage);
+                            } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
+                                e.preventDefault();
+                                currentPage++;
+                                renderPage(currentPage);
+                            }
+                        }
+                    }
+                };
+                
+                // Only add keyboard listener once
+                if (!window.paperKeyboardListenerAdded) {
+                    document.addEventListener('keydown', handleKeydown);
+                    window.paperKeyboardListenerAdded = true;
+                }
+                
+                // Load PDF
+                const loadingTask = pdfjsLib.getDocument({
+                    url: pdfUrl,
+                    httpHeaders: {},
+                    withCredentials: false
+                });
+                
+                loadingTask.promise.then(pdf => {
+                    pdfDoc = pdf;
+                    totalPages = pdf.numPages;
+                    indicator.textContent = `1 / ${totalPages}`;
+                    currentPage = 1;
+                    renderPage(1);
+                }).catch(error => {
+                    console.error('Error loading PDF:', error);
+                    console.error('PDF URL:', pdfUrl);
+                    console.error('Error message:', error.message);
+                    console.error('Error name:', error.name);
+                    indicator.textContent = 'Error loading paper';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                });
+            }
+            
+            // Initialize the paper slideshow
+            initPDFPaperSlideshow();
+        });
+    </script>
 </body>
 </html>
 

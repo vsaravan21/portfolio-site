@@ -23,36 +23,35 @@ const portfolioData = [
 const projectsData = [
     {
         id: 1,
-        title: 'Where you at',
-        tagline: 'Build Essential Skills, One Experience at a Time',
-        description: 'Mobile app for building essential skills through curated experiences',
-        tags: ['Product Design', 'Mobile App', 'UI/UX', 'Skill Development'],
-        image: 'images/where.png',
+        title: 'Omnyra',
+        description: 'AI-native infrastructure redefining U.S. biosecurity systems',
+        tags: ['Beneficiary Discovery', 'Lean Startup Methodology', 'Rapid Iteration'],
+        image: 'images/omnyra-final (2).png',
         specialLayout: true
     },
     {
         id: 2,
-        title: 'TripCompassSF',
+        title: 'where you at',
         description: 'AI-native biosecurity platform',
         tags: ['Product Design', 'Startup', 'AI', 'Biosecurity'],
-        image: 'images/Frame 16 (1).png',
+        image: 'images/where.png',
         specialLayout: true
     },
     {
         id: 3,
-        title: 'Grammarly',
+        title: 'TripCompassSF',
         tagline: 'Build Essential Skills, One Experience at a Time',
         description: 'Mobile app for building essential skills through curated experiences',
         tags: ['Product Design', 'Mobile App', 'UI/UX', 'Skill Development'],
-        image: 'images/image 5.png',
+        image: 'images/Frame 16 (1).png',
         specialLayout: true
     },
     {
         id: 4,
-        title: 'Fizz',
+        title: 'Whiskers',
         description: 'AI-native biosecurity platform',
         tags: ['Product Design', 'Startup', 'AI', 'Biosecurity'],
-        image: 'images/letthem.png',
+        image: 'images/image 5.png',
         specialLayout: true
     },
     {
@@ -60,7 +59,7 @@ const projectsData = [
         title: 'Project Placeholder 1',
         description: 'Coming soon - New project in development',
         tags: ['Coming Soon'],
-        image: 'images/Frame 7.png',
+        image: 'images/letthem.png',
         specialLayout: true
     },
     {
