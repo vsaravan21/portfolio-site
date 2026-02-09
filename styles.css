@@ -766,6 +766,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 400px; /* keep same vertical space as other cards */
 }
 
 .portfolio-banner-image {
@@ -773,6 +774,7 @@ main {
     height: 100%;
     object-fit: cover;
     border-radius: 30px;
+    object-position: center; /* crop evenly top/bottom */
 }
 
 
@@ -1021,6 +1023,73 @@ main {
 .project-detail-info-column:nth-child(3),
 .project-detail-info-column:nth-child(4) {
     gap: 0.25rem;
+}
+
+.project-detail-text-box {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 2.5rem;
+    padding: 2.5rem 3rem;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(166, 77, 218, 0.2);
+}
+
+.project-detail-text-box-content {
+    font-size: 1rem;
+    color: #444;
+    margin: 0;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.artist-statement-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #5b4d8e;
+    text-align: center;
+    margin: 2.5rem 0 0 0;
+    width: 100%;
+}
+
+.mochi-4-scale .project-detail-center-image {
+    transform: scale(1.23);
+    transform-origin: center;
+}
+
+.project-detail-extra-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2.5rem auto 2.5rem;
+    padding: 0 5rem;
+}
+
+.project-detail-video-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2.5rem auto 2.5rem;
+    padding: 0 5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.project-detail-video-inner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-detail-video {
+    width: 70%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
 
 .project-detail-pdf-container {
@@ -1314,6 +1383,18 @@ main {
         min-width: 200px;
     }
     
+    .project-detail-extra-container {
+        padding: 0 1.5rem;
+    }
+    
+    .project-detail-video-wrapper {
+        padding: 0 1.5rem;
+    }
+    
+    .project-detail-video {
+        width: 70%;
+    }
+    
     .project-detail-pdf-container {
         padding: 0 1.5rem;
         margin: 2.5rem auto 2.5rem;
@@ -1467,6 +1548,18 @@ main {
     .project-detail-info-column {
         flex: 1 1 auto;
         width: 100%;
+    }
+    
+    .project-detail-extra-container {
+        padding: 0 1rem;
+    }
+    
+    .project-detail-video-wrapper {
+        padding: 0 1rem;
+    }
+    
+    .project-detail-video {
+        width: 90%;
     }
     
     .project-detail-pdf-container {

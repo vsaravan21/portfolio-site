@@ -49,20 +49,20 @@ const worldData = {
                 {
                     role: 'Teaching',
                     organization: 'Hacking for Defense (MS&E297), Stanford University',
-                    timeRange: 'Coming soon',
-                    impact: 'Guiding student teams in applying the Lean Launchpad framework to solve real-world national security challenges.'
+                    timeRange: 'Jan 2026 - Present',
+                    impact: 'Recruit 8 cross disciplinary student teams, coordinate with government sponsors, and coach teams in Lean Startup methodology to produce high-impact national security and dual-use technology solutions.'
                 },
                 {
                     role: 'Teaching',
                     organization: 'Introduction to Public Speaking (ENGR103), Stanford University',
-                    timeRange: 'April 2025 – Present',
-                    impact: 'Taught and coached students on narrative, persuasive, and technical communication through structured workshops and feedback.'
+                    timeRange: 'Apr 2025 – Present',
+                    impact: 'Coached 80+ students on narrative, persuasive, and technical communication through structured lessons, workshops, and feedback.'
                 },
                 {
                     role: 'Research',
                     organization: 'Department of Computer Science (PinCS Lab), Stanford University',
                     timeRange: 'Apr 2024 – Mar 2025',
-                    impact: 'Built an interactive, web-based module using computer science to teach STEM concepts and pedagogy.'
+                    impact: 'Built interactive, web based learning modules that teach science concepts using introductory computer science principles for high school students.'
                 },
                 {
                     role: 'Research',
@@ -108,7 +108,7 @@ const worldData = {
                     role: 'Co-founder & Vice President',
                     organization: 'Stanford Initiative for Domestic Violence Awareness & Prevention',
                     timeRange: 'Sep 2023 – Present',
-                    impact: 'Launched 3 domestic violence awareness programs with local high schools, impacting 120 students, and completed 40-hour DV advocacy training.'
+                    impact: 'Launched 3 domestic violence awareness programs with local high schools, impacting 120 students, and completed 40-hour DV awareness training.'
                 },
                 {
                     role: 'Co–Vice President of Marketing & Communications',

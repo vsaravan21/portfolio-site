@@ -23,54 +23,89 @@ const portfolioData = [
 const projectsData = [
     {
         id: 1,
-        title: 'Omnyra',
-        description: 'AI-native infrastructure redefining U.S. biosecurity systems',
-        tags: ['Beneficiary Discovery', 'Lean Startup Methodology', 'Rapid Iteration'],
-        image: 'images/omnyra-final (2).png',
-        specialLayout: true
-    },
-    {
-        id: 2,
-        title: 'where you at',
-        description: 'AI-native biosecurity platform',
-        tags: ['Product Design', 'Startup', 'AI', 'Biosecurity'],
+        title: 'where you at?',
+        description: 'Location powered social connection in real time',
+        tags: ['Real-Time Social Systems', 'Location-Based UX', 'Privacy-Aware Design'],
         image: 'images/where.png',
         specialLayout: true
     },
     {
-        id: 3,
+        id: 2,
         title: 'TripCompassSF',
-        tagline: 'Build Essential Skills, One Experience at a Time',
-        description: 'Mobile app for building essential skills through curated experiences',
-        tags: ['Product Design', 'Mobile App', 'UI/UX', 'Skill Development'],
+        description: 'Personalized, Budget and Time-Aware Itineraries',
+        tags: ['Personalized Product Systems', 'Constraint-Aware Planning', 'ML-Driven Decision Making'],
         image: 'images/Frame 16 (1).png',
         specialLayout: true
     },
     {
-        id: 4,
-        title: 'Whiskers',
-        description: 'AI-native biosecurity platform',
-        tags: ['Product Design', 'Startup', 'AI', 'Biosecurity'],
+        id: 3,
+        title: 'Whisk(ers)',
+        description: 'Cozy escape-room puzzle game built around exploration and problem solving',
+        tags: ['Puzzle Systems', 'Narrative Flow', 'Iterative Prototyping'],
         image: 'images/image 5.png',
         specialLayout: true
     },
     {
-        id: 5,
-        title: 'Project Placeholder 1',
-        description: 'Coming soon - New project in development',
-        tags: ['Coming Soon'],
+        id: 4,
+        title: 'let them eat cake.',
+        description: 'A social deduction party game focused on playful deception and social bonding.',
+        tags: ['Social Game Design', 'Rapid Iteration', 'Player Interaction Systems'],
         image: 'images/letthem.png',
         specialLayout: true
     },
     {
-        id: 6,
-        title: 'Project Placeholder 2',
-        description: 'Coming soon - New project in development',
-        tags: ['Coming Soon'],
-        image: 'images/image 3.png',
+        id: 5,
+        title: 'Stanford Management Group',
+        description: 'Product-Focused Consulting Engagements with Grammarly and Fizz',
+        tags: ['Product Vision', 'User Research & Interviewing', 'Go-to-Market Strategy'],
+        image: 'images/SMG-Image.jpeg',
         specialLayout: true
     }
 ];
+
+// Project details data for individual project pages
+const projectDetails = {
+    1: {
+        title: 'where you at?',
+        image: 'images/where.png',
+        role: 'Full Stack Product Engineer',
+        timeline: 'Nov 2025 - Dec 2025',
+        team: ['Varsha Saravanan', 'Joshua Bahk'],
+        skills: ['Full-Stack Mobile Development', 'User Centered Design', 'API Integration', 'Real-Time Social Features']
+    },
+    2: {
+        title: 'TripCompassSF',
+        image: 'images/Frame 16 (1).png',
+        role: 'AI Engineer',
+        timeline: 'Oct 2025 - Dec 2025',
+        team: ['Varsha Saravanan', 'Isaias Martinez'],
+        skills: ['Preference Modeling', 'Feature Engineering', 'Search Optimization', 'System Evaluation']
+    },
+    3: {
+        title: 'Whisk(ers)',
+        image: 'images/image 5.png',
+        role: 'Game Designer & Developer',
+        timeline: 'May 2025 - June 2025',
+        team: ['Varsha Saravanan', 'Kristine Ma', 'Sarah Teaw'],
+        skills: ['Unity 2D Development', 'Onboarding & Hint Design', 'Escape Room Mechanics', 'Playtesting & Iteration']
+    },
+    4: {
+        title: 'let them eat cake.',
+        image: 'images/letthem.png',
+        role: 'Game Designer',
+        timeline: 'April 2025 - May 2025',
+        team: ['Varsha Saravanan', 'Kristine Ma', 'Yosief Abraham', 'Yinlin Zhao'],
+        skills: ['Narrative Systems', 'Game Mechanics Design', 'Playtesting & Iteration', 'Rule System Design']
+    },
+    5: {
+        title: 'Stanford Management Group',
+        image: 'images/SMG-Image.jpeg',
+        role: 'Consultant',
+        timeline: 'Oct 2023 - June 2024',
+        team: ['Varsha Saravanan'],
+        skills: ['Product Research & Synthesis', 'Feature Recommendations', 'Strategic Thinking & Business Acumen', 'Stakeholder Communication']
+    }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     const portfolioCards = document.getElementById('portfolioCards');
@@ -95,10 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add specific class for Fizz image to adjust opacity
             if (portfolio.title === 'Fizz') {
                 imageClass += ' portfolio-image-fizz';
-            }
-            // Add opacity class for bottom left image (id 5 in projects page)
-            if (portfolio.id === 6) {
-                imageClass += ' portfolio-image-bottom-left';
             }
             portfolioCard.innerHTML = `
                 <img src="${portfolio.image}" alt="${portfolio.title}" class="${imageClass}">

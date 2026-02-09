@@ -25,354 +25,528 @@
             </svg>
         </a>
         <div class="project-detail-image-container">
-            <img src="images/omnyra-final (4).jpeg" alt="Omnyra" id="projectMainImage" class="project-detail-center-image">
+            <img src="" alt="" id="projectMainImage" class="project-detail-center-image">
         </div>
         <div class="project-detail-info-grid" id="projectInfoGrid">
             <div class="project-detail-info-column">
                 <h3 class="project-detail-info-heading">ROLE</h3>
-                <p class="project-detail-info-text">Co-founder & Head of Product</p>
+                <p class="project-detail-info-text" id="projectRole">-</p>
             </div>
             <div class="project-detail-info-column">
                 <h3 class="project-detail-info-heading">TIMELINE</h3>
-                <p class="project-detail-info-text">Feb 2025 - Oct 2025</p>
+                <p class="project-detail-info-text" id="projectTimeline">-</p>
             </div>
             <div class="project-detail-info-column">
                 <h3 class="project-detail-info-heading">TEAM</h3>
-                <p class="project-detail-info-text">Varsha Saravanan</p>
-                <p class="project-detail-info-text">Emilin Mathew</p>
+                <div id="projectTeam"></div>
             </div>
             <div class="project-detail-info-column">
                 <h3 class="project-detail-info-heading">SKILLS</h3>
-                <p class="project-detail-info-text">Beneficiary Discovery & Mapping</p>
-                <p class="project-detail-info-text">Lean Startup Methodology</p>
-                <p class="project-detail-info-text">Systems Thinking</p>
-                <p class="project-detail-info-text">Rapid Iteration</p>
+                <div id="projectSkills"></div>
             </div>
         </div>
-        <div class="project-detail-overview">
-            <p class="project-detail-overview-text">Born out of Stanford's Hacking for Defense program, Omnyra began as an exploration into where modern biosecurity systems quietly fail as biological design becomes cheaper, faster, and more accessible. Through 130+ interviews across government agencies, gene synthesis companies, researchers, and policy experts, the team mapped real-world workflows, bottlenecks, and blind spots in existing screening approaches. Early assumptions were repeatedly challenged, leading to multiple pivots in both beneficiary focus and technical direction as we learned where intervention would matter most. These insights shaped Omnyra into an AI-native approach centered on function-aware risk detection rather than static, list-based screening. Over time, the project evolved from a research question into a systems-level effort focused on responsible deployment at national scale. What follows is a snapshot of Omnyra's initial 10-week needfinding and prototyping sprint.</p>
-        </div>
-        <div class="project-detail-pdf-container">
-            <div class="pdf-slideshow">
-                <button class="slideshow-arrow slideshow-arrow-left" id="prevSlide" aria-label="Previous slide">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                <div class="slideshow-viewport">
-                    <canvas id="pdfCanvas" class="slideshow-canvas"></canvas>
-                </div>
-                <button class="slideshow-arrow slideshow-arrow-right" id="nextSlide" aria-label="Next slide">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                <div class="slideshow-indicator" id="slideIndicator">1 / 1</div>
-            </div>
-            <p class="slideshow-caption">Omnyra: Initial problem framing, beneficiary discovery, and MVP exploration developed during Stanford's Hacking for Defense program.</p>
-        </div>
-        <div class="project-detail-overview">
-            <p class="project-detail-overview-text">Since then, Omnyra was accepted into a startup accelerator supported by the Defense Innovation Unit, where the team moved quickly into rapid prototyping, built a functional MVP, and conducted early beta testing with stakeholders. In parallel, I co-authored a Nature Perspective titled "Generative AI for Biosciences: Emerging Threats and a Roadmap to Biosecurity" (currently in review), examining the biosecurity implications of generative AI and outlining technical and policy pathways forward. This work was developed in collaboration with leading experts in synthetic biology and AI, including George Church, Mengdi Wang, and Russ Altman. Together, these efforts reflect Omnyra's transition from early exploration to active engagement with both technical and policy communities shaping the future of biosecurity.</p>
-        </div>
-        <div class="project-detail-pdf-container">
-            <div class="pdf-slideshow">
-                <button class="slideshow-arrow slideshow-arrow-left" id="prevSlidePaper" aria-label="Previous slide">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                <div class="slideshow-viewport">
-                    <canvas id="pdfCanvasPaper" class="slideshow-canvas"></canvas>
-                </div>
-                <button class="slideshow-arrow slideshow-arrow-right" id="nextSlidePaper" aria-label="Next slide">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                <div class="slideshow-indicator" id="slideIndicatorPaper">1 / 1</div>
-            </div>
-            <p class="slideshow-caption">Generative AI for Biosciences: Emerging Threats and a Roadmap to Biosecurity" — Nature Perspective (in review).</p>
-        </div>
+        <div class="project-detail-extra-container" id="projectExtraContainer" style="display: none;"></div>
+        <div class="project-detail-pdf-container" id="projectPdfContainer" style="display: none;"></div>
+        <div class="project-detail-video-wrapper" id="projectVideoContainer" style="display: none;"></div>
+        <div class="project-detail-pdf-container" id="projectCakeContainer" style="display: none;"></div>
     </main>
     
-    <!-- PDF.js library -->
+    <!-- PDF.js library (for TripCompassSF report) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <!-- Load portfolio.js to access projectDetails -->
+    <script src="portfolio.js"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Apply zoom class to Omnyra image
+            // Get project ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = parseInt(urlParams.get('id'));
+            
+            // Get project details
+            const project = projectDetails[projectId];
+            
+            if (!project) {
+                console.error('Project not found for ID:', projectId);
+                return;
+            }
+            
+            // Update page title
+            document.title = `${project.title} - Varsha`;
+            
+            // Update main image
             const mainImage = document.getElementById('projectMainImage');
             const imageContainer = mainImage ? mainImage.closest('.project-detail-image-container') : null;
             
-            if (imageContainer) {
-                imageContainer.classList.add('omnyra-image-zoom');
+            if (mainImage && project.image) {
+                mainImage.src = project.image;
+                mainImage.alt = project.title;
             }
             
-            // Wait for PDF.js to load
-            function initPDFSlideshow() {
-                if (typeof pdfjsLib === 'undefined') {
-                    setTimeout(initPDFSlideshow, 100);
-                    return;
-                }
-                
-                // Check if we're using file:// protocol (won't work with PDF.js)
-                if (window.location.protocol === 'file:') {
-                    const indicator = document.getElementById('slideIndicator');
-                    if (indicator) {
-                        indicator.textContent = 'Please use a local server (e.g., python -m http.server)';
-                        indicator.style.background = 'rgba(220, 53, 69, 0.9)';
-                    }
-                    return;
-                }
-                
-                // Configure PDF.js worker
-                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
-                
-                // Initialize PDF slideshow - use relative path (no encoding needed for relative paths)
-                const pdfUrl = 'images/_Omnyra - Final Presentation (PW).pdf';
-                const canvas = document.getElementById('pdfCanvas');
-                if (!canvas) return;
-                
-                const ctx = canvas.getContext('2d');
-                const prevBtn = document.getElementById('prevSlide');
-                const nextBtn = document.getElementById('nextSlide');
-                const indicator = document.getElementById('slideIndicator');
-                
-                let pdfDoc = null;
-                let currentPage = 1;
-                let totalPages = 0;
-                let renderTask = null;
-                
-                // Render a specific page
-                function renderPage(pageNum) {
-                    if (!pdfDoc) return;
-                    
-                    // Cancel previous render task if it exists
-                    if (renderTask) {
-                        renderTask.cancel();
-                    }
-                    
-                    pdfDoc.getPage(pageNum).then(page => {
-                        const viewport = page.getViewport({ scale: 2.0 });
-                        
-                        // Set canvas dimensions
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
-                        
-                        // Render PDF page
-                        const renderContext = {
-                            canvasContext: ctx,
-                            viewport: viewport
-                        };
-                        
-                        renderTask = page.render(renderContext);
-                        return renderTask.promise;
-                    }).then(() => {
-                        // Update indicator
-                        indicator.textContent = `${currentPage} / ${totalPages}`;
-                        
-                        // Update button states
-                        prevBtn.disabled = currentPage <= 1;
-                        nextBtn.disabled = currentPage >= totalPages;
-                    }).catch(error => {
-                        if (error.name !== 'RenderingCancelledException') {
-                            console.error('Error rendering page:', error);
-                        }
-                    });
-                }
-                
-                // Navigation handlers
-                prevBtn.addEventListener('click', () => {
-                    if (currentPage > 1) {
-                        currentPage--;
-                        renderPage(currentPage);
-                    }
-                });
-                
-                nextBtn.addEventListener('click', () => {
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        renderPage(currentPage);
-                    }
-                });
-                
-                // Keyboard navigation
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft' && currentPage > 1) {
-                        currentPage--;
-                        renderPage(currentPage);
-                    } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
-                        currentPage++;
-                        renderPage(currentPage);
-                    }
-                });
-                
-                // Load PDF
-                const loadingTask = pdfjsLib.getDocument({
-                    url: pdfUrl,
-                    httpHeaders: {},
-                    withCredentials: false
-                });
-                
-                loadingTask.promise.then(pdf => {
-                    pdfDoc = pdf;
-                    totalPages = pdf.numPages;
-                    indicator.textContent = `1 / ${totalPages}`;
-                    currentPage = 1;
-                    renderPage(1);
-                }).catch(error => {
-                    console.error('Error loading PDF:', error);
-                    console.error('PDF URL:', pdfUrl);
-                    console.error('Error message:', error.message);
-                    console.error('Error name:', error.name);
-                    indicator.textContent = 'Error loading presentation';
-                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+            // Update info grid
+            const roleEl = document.getElementById('projectRole');
+            const timelineEl = document.getElementById('projectTimeline');
+            const teamEl = document.getElementById('projectTeam');
+            const skillsEl = document.getElementById('projectSkills');
+            
+            if (roleEl) roleEl.textContent = project.role;
+            if (timelineEl) timelineEl.textContent = project.timeline;
+            
+            // Update team members
+            if (teamEl && project.team) {
+                teamEl.innerHTML = '';
+                project.team.forEach(member => {
+                    const p = document.createElement('p');
+                    p.className = 'project-detail-info-text';
+                    p.textContent = member;
+                    teamEl.appendChild(p);
                 });
             }
             
-            // Initialize the first slideshow (Omnyra presentation)
-            initPDFSlideshow();
-            
-            // Initialize the second slideshow (GenAI paper)
-            function initPDFPaperSlideshow() {
-                if (typeof pdfjsLib === 'undefined') {
-                    setTimeout(initPDFPaperSlideshow, 100);
-                    return;
-                }
-                
-                // Check if we're using file:// protocol (won't work with PDF.js)
-                if (window.location.protocol === 'file:') {
-                    const indicator = document.getElementById('slideIndicatorPaper');
-                    if (indicator) {
-                        indicator.textContent = 'Please use a local server (e.g., python -m http.server)';
-                        indicator.style.background = 'rgba(220, 53, 69, 0.9)';
-                    }
-                    return;
-                }
-                
-                // Configure PDF.js worker (already configured, but ensure it's set)
-                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
-                
-                // Initialize PDF slideshow for the paper
-                const pdfUrl = 'images/GenAI for Biosciences.pdf';
-                const canvas = document.getElementById('pdfCanvasPaper');
-                if (!canvas) return;
-                
-                const ctx = canvas.getContext('2d');
-                const prevBtn = document.getElementById('prevSlidePaper');
-                const nextBtn = document.getElementById('nextSlidePaper');
-                const indicator = document.getElementById('slideIndicatorPaper');
-                
-                let pdfDoc = null;
-                let currentPage = 1;
-                let totalPages = 0;
-                let renderTask = null;
-                
-                // Render a specific page
-                function renderPage(pageNum) {
-                    if (!pdfDoc) return;
-                    
-                    // Cancel previous render task if it exists
-                    if (renderTask) {
-                        renderTask.cancel();
-                    }
-                    
-                    pdfDoc.getPage(pageNum).then(page => {
-                        const viewport = page.getViewport({ scale: 2.0 });
-                        
-                        // Set canvas dimensions
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
-                        
-                        // Render PDF page
-                        const renderContext = {
-                            canvasContext: ctx,
-                            viewport: viewport
-                        };
-                        
-                        renderTask = page.render(renderContext);
-                        return renderTask.promise;
-                    }).then(() => {
-                        // Update indicator
-                        indicator.textContent = `${currentPage} / ${totalPages}`;
-                        
-                        // Update button states
-                        prevBtn.disabled = currentPage <= 1;
-                        nextBtn.disabled = currentPage >= totalPages;
-                    }).catch(error => {
-                        if (error.name !== 'RenderingCancelledException') {
-                            console.error('Error rendering page:', error);
-                        }
-                    });
-                }
-                
-                // Navigation handlers
-                prevBtn.addEventListener('click', () => {
-                    if (currentPage > 1) {
-                        currentPage--;
-                        renderPage(currentPage);
-                    }
-                });
-                
-                nextBtn.addEventListener('click', () => {
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        renderPage(currentPage);
-                    }
-                });
-                
-                // Keyboard navigation (only when this slideshow is focused)
-                const handleKeydown = (e) => {
-                    const paperSlideshow = document.getElementById('pdfCanvasPaper');
-                    if (paperSlideshow && paperSlideshow.offsetParent !== null) {
-                        // Check if paper slideshow is visible
-                        const rect = paperSlideshow.getBoundingClientRect();
-                        if (rect.top < window.innerHeight && rect.bottom > 0) {
-                            if (e.key === 'ArrowLeft' && currentPage > 1) {
-                                e.preventDefault();
-                                currentPage--;
-                                renderPage(currentPage);
-                            } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
-                                e.preventDefault();
-                                currentPage++;
-                                renderPage(currentPage);
-                            }
-                        }
-                    }
-                };
-                
-                // Only add keyboard listener once
-                if (!window.paperKeyboardListenerAdded) {
-                    document.addEventListener('keydown', handleKeydown);
-                    window.paperKeyboardListenerAdded = true;
-                }
-                
-                // Load PDF
-                const loadingTask = pdfjsLib.getDocument({
-                    url: pdfUrl,
-                    httpHeaders: {},
-                    withCredentials: false
-                });
-                
-                loadingTask.promise.then(pdf => {
-                    pdfDoc = pdf;
-                    totalPages = pdf.numPages;
-                    indicator.textContent = `1 / ${totalPages}`;
-                    currentPage = 1;
-                    renderPage(1);
-                }).catch(error => {
-                    console.error('Error loading PDF:', error);
-                    console.error('PDF URL:', pdfUrl);
-                    console.error('Error message:', error.message);
-                    console.error('Error name:', error.name);
-                    indicator.textContent = 'Error loading paper';
-                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+            // Update skills
+            if (skillsEl && project.skills) {
+                skillsEl.innerHTML = '';
+                project.skills.forEach(skill => {
+                    const p = document.createElement('p');
+                    p.className = 'project-detail-info-text';
+                    p.textContent = skill;
+                    skillsEl.appendChild(p);
                 });
             }
             
-            // Initialize the paper slideshow
-            initPDFPaperSlideshow();
+            // Embed text box for "where you at?"
+            const extraContainer = document.getElementById('projectExtraContainer');
+            if (extraContainer && projectId === 1) {
+                extraContainer.style.display = 'block';
+                extraContainer.innerHTML = `
+                    <div class="project-detail-text-box">
+                        <p class="project-detail-text-box-content">where you at? is a real time friend map and social coordination app that helps people see where their friends are, what they are doing, and when they are available to meet. It combines live location sharing with quick text statuses, profile photo updates, and availability signals so users can understand context at a glance without constant messaging. Users can add friends, organize them into custom groups, and filter views to focus on the people who matter in the moment. Built with privacy and control in mind, the app lets people choose what to share and when, turning location and activity signals into lightweight, intentional connection.</p>
+                    </div>
+                `;
+            }
+            
+            // Embed PDF slideshow for TripCompassSF (same dimensions/styling as Omnyra)
+            const pdfContainer = document.getElementById('projectPdfContainer');
+            if (pdfContainer && projectId === 2) {
+                pdfContainer.style.display = 'flex';
+                pdfContainer.style.flexDirection = 'column';
+                pdfContainer.innerHTML = `
+                    <div class="project-detail-text-box">
+                        <p class="project-detail-text-box-content">TripCompass is an AI-powered itinerary planner that generates personalized, time- and budget-aware daily travel schedules. It uses a neural-network satisfaction model to predict how much a specific user will enjoy each point-of-interest based on features like interests, pace, cost, popularity, duration, and distance. The current model is trained on a San Francisco POI dataset, but the pipeline is city-agnostic and designed to generalize with new location data. These predictions guide a beam-search-based planner that builds feasible itineraries while enforcing real-world constraints like opening hours, travel time, and budget limits. The system also applies interest-weighted ranking and light diversity bonuses to avoid repetitive plans and improve variety. The AI model outperformed a linear baseline and translated those gains into more coherent, higher-quality itineraries.</p>
+                    </div>
+                    <div class="pdf-slideshow">
+                        <button class="slideshow-arrow slideshow-arrow-left" id="tripPrevSlide" aria-label="Previous slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="slideshow-viewport">
+                            <canvas id="tripPdfCanvas" class="slideshow-canvas"></canvas>
+                        </div>
+                        <button class="slideshow-arrow slideshow-arrow-right" id="tripNextSlide" aria-label="Next slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="slideshow-indicator" id="tripSlideIndicator">1 / 1</div>
+                    </div>
+                    <p class="slideshow-caption">TripCompassSF final report outlining an AI-based personalized itinerary planning system.</p>
+                `;
+                initTripCompassPDF();
+            }
+            
+            // Embed text box and video for Whisk(ers)
+            const videoContainer = document.getElementById('projectVideoContainer');
+            if (videoContainer && projectId === 3) {
+                videoContainer.style.display = 'flex';
+                videoContainer.style.flexDirection = 'column';
+                videoContainer.innerHTML = `
+                    <div class="project-detail-text-box">
+                        <p class="project-detail-text-box-content">Whisk(ers) is a cozy 2D puzzle escape-room game where players help a teenage cat, Mochi, run her parents' bakery by completing a series of connected escape-room-style challenges. The game centers on point-and-click exploration, logic puzzles, and a small mini-game, wrapped in a soft visual style and calm atmosphere to keep the experience approachable and low pressure. Built in Unity as a polished vertical slice, it emphasizes clear interactions, simple onboarding, and guided puzzle progression. The project reflects collaborative design and playtest-driven iteration to balance challenge, clarity, and player experience.</p>
+                    </div>
+                    <div class="project-detail-video-inner">
+                        <video class="project-detail-video" controls playsinline preload="metadata">
+                            <source src="images/cs247g-demo-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="slideshow-caption">whisk(ers) Demo Video and Full Video Walkthrough</p>
+                    <div class="project-detail-image-wrapper" style="margin-top: 2.5rem;">
+                        <img src="images/mochi1.png" alt="Mochi" class="project-detail-center-image" style="max-width: 100%; height: auto;">
+                    </div>
+                    <h2 class="artist-statement-title">Artist Statement</h2>
+                    <div class="project-detail-text-box" style="margin-top: 1rem;">
+                        <p class="project-detail-text-box-content">Whisk(ers) follows the adventure of Mochi, a teenage cat that is unexpectedly left in charge of her parents' bakery – the most renowned bakery in all of Caturn. Although Mochi is left with a list of instructions, a sudden gust of wind blows it away before she is able to make her way through them, the wind takes it away and the instructions are nowhere to be found. She is now left alone in her parent's bakery, with the challenge of figuring things out on her own. With the player's help, Mochi must complete a series of challenges that guide her through the kitchen and prepare her to take over the bakery.</p>
+                        <p class="project-detail-text-box-content" style="margin-top: 1rem;">This puzzle based escape room game is designed to evoke a cozy, comforting atmosphere, while engaging players in problem solving and exploration of space. Through calming music, a soothing color palette, and whimsical design choices, Whisk(ers) creates a meaningful experience for players of all ages. Our goal as developers was to strike a balance between logic driven gameplay and an aesthetically cozy environment, making it approachable and enjoyable for both younger and older audiences alike.</p>
+                    </div>
+                    <div class="project-detail-image-wrapper" style="margin-top: 2.5rem;">
+                        <img src="images/mochi 2.png" alt="Mochi 2" class="project-detail-center-image" style="max-width: 100%; height: auto;">
+                    </div>
+                    <h2 class="artist-statement-title">Initial Decisions and Values</h2>
+                    <div class="project-detail-text-box" style="margin-top: 1rem;">
+                        <p class="project-detail-text-box-content">Our initial design decisions centered around the integration of escape room mechanics — known to be mysterious, layered, and mind-boggling — with the cozy game experience, which was a tricky balance to strike at first. We prioritized sense pleasure and abnegation by layering soft lofi music, interactive kitchen sounds, and intentionally removing time constraints to encourage exploration at a more relaxed pace. We chose a pastel color palette, which is softer on the eyes, to create a cozier environment. From the beginning, we wanted our game to convey a strong narrative: a coming-of-age story that allows players to help Mochi navigate seemingly paramount challenges, as she experiences independence without her parents' direct supervision.</p>
+                    </div>
+                    <h2 class="artist-statement-title">Concept Map</h2>
+                    <div class="project-detail-images-row project-detail-concept-map" style="margin-top: 1rem; gap: 6rem;">
+                        <div class="project-detail-image-container"><img src="images/mochi 3.png" alt="Mochi 3" class="project-detail-center-image"></div>
+                        <div class="project-detail-image-container mochi-4-scale"><img src="images/mochi 4.png" alt="Mochi 4" class="project-detail-center-image"></div>
+                    </div>
+                    <h2 class="artist-statement-title">Objectives</h2>
+                    <div class="project-detail-text-box" style="margin-top: 1rem;">
+                        <p class="project-detail-text-box-content">The primary objective of our game is enabling players to complete a series of challenges that help Mochi make her way through the kitchen, preparing her to take over. For example, the first game we implemented — fixing the stuck oven, focuses on players' ability to explore space and identify patterns: there are four unique clocks, each differing in color and direction. Although we hadn't yet finalized the objectives of the other two games at this stage, we decided on a semi-linear narrative. This means players can work on the first two puzzles simultaneously, but the final piece of the second puzzle only becomes accessible after completing the first. We chose this structure to facilitate sequential gameplay while still providing freedom to explore, helping players avoid feeling stuck or at a dead end. Although all three puzzles were not finalized in the initial decision making stage, we aimed to balance open ended exploration of the bakery with a clear, guided progression of challenges.</p>
+                    </div>
+                    <div class="project-detail-image-wrapper" style="margin-top: 2.5rem;">
+                        <img src="images/mochi 6.png" alt="Mochi 6" class="project-detail-center-image" style="max-width: 100%; height: auto;">
+                    </div>
+                    <p class="slideshow-caption">Oven Must be Fixed to Unlock Last Broken Teacup Piece</p>
+                    <h2 class="artist-statement-title">Procedures</h2>
+                    <div class="project-detail-text-box" style="margin-top: 1rem;">
+                        <p class="project-detail-text-box-content">As game designers, we knew from the beginning that the ability to interact with the space presented would be key to fruitful exploration. Through mechanics such as rotating dials, clicking to add items to the inventory, dragging broken teacup pieces, users are able to explore the depths of this point-and-click puzzle based game. Further, it was important for Whisk(ers) to respond to the player's actions. We implemented this through responsive feedback such as sounds, the opening of drawers, the click of buttons, and the turn of a dial, all reinforcing that the game is alive and reacting to the player's choices.</p>
+                    </div>
+                    <div class="project-detail-image-wrapper" style="margin-top: 2.5rem;">
+                        <img src="images/mochi 10.png" alt="Mochi 10" class="project-detail-center-image" style="max-width: 100%; height: auto;">
+                    </div>
+                    <p class="slideshow-caption">Important Mechanics Introduced in Onboarding</p>
+                    <h2 class="artist-statement-title">Conflict</h2>
+                    <div class="project-detail-text-box" style="margin-top: 1rem;">
+                        <p class="project-detail-text-box-content">Whisk(ers) doesn't feature interpersonal conflict as an embedded feature of the game. In fact, this was an intentional design choice to support a calm and cozy atmosphere. Instead of external conflict, the game touches on Mochi's internal conflict and resolution. She initially experiences self-doubt and uncertainty when she steps into the kitchen without clear instructions. Players help Mochi by solving puzzles and restoring order in the bakery. This inward-facing conflict makes the experience more reflective and gentle, inviting players to support a character who gains confidence through small yet meaningful successes. The absence of interpersonal tension helps maintain a soothing tone and creates a space of comfort rather than stress.</p>
+                    </div>
+                    <div class="project-detail-image-wrapper" style="margin-top: 2.5rem;">
+                        <img src="images/mochi 5.png" alt="Mochi 5" class="project-detail-center-image" style="max-width: 100%; height: auto;">
+                    </div>
+                    <h2 class="artist-statement-title">Boundaries</h2>
+                    <div class="project-detail-text-box" style="margin-top: 1rem;">
+                        <p class="project-detail-text-box-content">The game is set within the confines of the kitchen. Since this is level one of a larger game where Mochi will eventually explore the rest of the bakery, the current boundary is the kitchen setting. While we include plenty of interactable objects, like cupboards, utensils, drawers, and shelves, many objects are not interactable and are there purely for aesthetic purposes.</p>
+                    </div>
+                    <h2 class="artist-statement-title">Outcomes</h2>
+                    <div class="project-detail-text-box" style="margin-top: 1rem;">
+                        <p class="project-detail-text-box-content">Completing a puzzle unlocks a piece needed to access or complete the next puzzle. We discussed the possibility of tracking points through the completion of challenges, but to preserve the non competitive and more cozy spirit of the game, we decided not to move forward with that. Instead, we focused on progress through interaction and discovery, allowing players to feel a sense of accomplishment without pressure of points.</p>
+                    </div>
+                    <h2 class="artist-statement-title">Scope of the Game</h2>
+                    <div class="project-detail-text-box" style="margin-top: 1rem;">
+                        <p class="project-detail-text-box-content">Whisk(ers) sits at the intersection of an MVP and a slice – a hybrid of the two. While we've built only the first level of a larger game, this level consists of two puzzles and a mini-game that we aimed to make as polished and complete as possible within our project timeline. This first level, set in the kitchen, follows Mochi, who is left to manage the bakery and must figure out how things work by completing a series of escape room style challenges: fixing the oven dials, piecing together a broken teacup, and catching enough apples to bake her mom's signature apple pie. In the context of our larger game, we envision future levels where Mochi unlocks additional rooms in the bakery and is able to puzzle her way through learning how to run it.</p>
+                    </div>
+                    <h2 class="artist-statement-title">Playtesting and Iteration History</h2>
+                    <div class="project-detail-pdf-container" style="margin-top: 1rem;">
+                        <div class="pdf-slideshow">
+                            <button class="slideshow-arrow slideshow-arrow-left" id="whiskersPrevSlide" aria-label="Previous slide">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <div class="slideshow-viewport">
+                                <canvas id="whiskersPdfCanvas" class="slideshow-canvas"></canvas>
+                            </div>
+                            <button class="slideshow-arrow slideshow-arrow-right" id="whiskersNextSlide" aria-label="Next slide">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <div class="slideshow-indicator" id="whiskersSlideIndicator">1 / 1</div>
+                        </div>
+                    </div>
+                    <h2 class="artist-statement-title">Ideas for Initial Release</h2>
+                    <div class="project-detail-text-box" style="margin-top: 1rem;">
+                        <p class="project-detail-text-box-content">In a full release, Whisk(ers) would expand into a multi-level escape-room game where Mochi learns to run different parts of the bakery, with new areas like the greenhouse, dining hall, and lobby unlocked over time. Each level would reveal more of the story through environmental details and collectibles, letting the narrative unfold naturally alongside gameplay. We also plan to deepen polish with richer animation, sound, and interaction feedback to make the world feel more responsive and alive. The long-term arc ends with a story resolution where Mochi's parents return and recognize her growth and independence.</p>
+                    </div>
+                    <div class="project-detail-image-wrapper" style="margin-top: 2.5rem;">
+                        <img src="images/mochi 11.png" alt="Mochi 11" class="project-detail-center-image" style="max-width: 100%; height: auto;">
+                    </div>
+                    <h2 class="artist-statement-title">Accessibility Notes</h2>
+                    <div class="project-detail-text-box" style="margin-top: 1rem;">
+                        <p class="project-detail-text-box-content">Accessibility was a core goal for Whisk(ers), so we designed the experience to be usable across a wide range of players. All instructions are text-based rather than audio-only, and we used a dyslexia-friendly font and color choices that remain distinguishable for color-blind players. While not all features are fully implemented yet, we plan to add screen-reader-friendly text, alt text for visuals, adjustable hint pacing, and flexible puzzle difficulty. The long-term aim is to keep the game challenging but comfortable for players with different needs and abilities.</p>
+                    </div>
+                    <div class="project-detail-image-wrapper" style="margin-top: 2.5rem;">
+                        <img src="images/mochi 12.png" alt="Mochi 12" class="project-detail-center-image" style="max-width: 100%; height: auto;">
+                    </div>
+                `;
+                initWhiskersPDF();
+            }
+            
+            // Embed PDF for "let them eat cake."
+            const cakeContainer = document.getElementById('projectCakeContainer');
+            if (cakeContainer && projectId === 4) {
+                cakeContainer.style.display = 'flex';
+                cakeContainer.style.flexDirection = 'column';
+                cakeContainer.innerHTML = `
+                    <h2 class="artist-statement-title">Artist Statement</h2>
+                    <div class="project-detail-text-box" style="margin-top: 1rem;">
+                        <p class="project-detail-text-box-content">It is the eighteenth century, and the peasants are starving. In response to the bread shortage, Marie Antoinette has famously (and iconically) said, "Let them eat cake!" The peasants become violent. Marie Antoinette flees the palace, but unfortunately lands herself among the peasantry. The peasants know she is among them, but she has disguised herself. To root her out and send her to the guillotine, they come up with a plan…</p>
+                        <p class="project-detail-text-box-content" style="margin-top: 1rem;">Designed for a group of 5-10 players, ages 13+, Let Them Eat Cake is a French Revolution–themed, social mediation card game in which players— the French commoners— creatively respond to prompts through writing. However, there's a twist: Marie Antoinette, with her royal personality, is given a secret constraint on her responses. The peeved peasants must identify her.</p>
+                        <p class="project-detail-text-box-content" style="margin-top: 1rem;">Our intention was to allow for players to find fun from fellowship— game as social framework— as players reveal their voices and humor through their responses, Marie Antoinette bluffs, and the "peeved peasants" playfully argue with each other over the identity of the Queen. Our game also incorporates expression, as all players are able to express themselves through their free-form responses, as well as challenge, as players designated as "peeved peasants" work to identify the Queen, and Marie bends her given constraint to its limits to stay out of suspicion. Secondarily, our game also incorporates narrative as prompts are Revolution-themed, and the rules encourage players to tap into their new identities (or masquerade as a peasant.)</p>
+                        <p class="project-detail-text-box-content" style="margin-top: 1rem;">Long live the queen!</p>
+                        <p class="project-detail-text-box-content" style="margin-top: 1rem;">Just kidding. (Unless you're Marie, of course.)</p>
+                    </div>
+                    <div class="pdf-slideshow">
+                        <button class="slideshow-arrow slideshow-arrow-left" id="cakePrevSlide" aria-label="Previous slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="slideshow-viewport">
+                            <canvas id="cakePdfCanvas" class="slideshow-canvas"></canvas>
+                        </div>
+                        <button class="slideshow-arrow slideshow-arrow-right" id="cakeNextSlide" aria-label="Next slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="slideshow-indicator" id="cakeSlideIndicator">1 / 1</div>
+                    </div>
+                    <p class="slideshow-caption">let them eat cake printable card deck with box and instructions</p>
+                `;
+                initCakePDF();
+            }
+            
+            // Embed images for Stanford Management Group
+            const smgContainer = document.getElementById('projectExtraContainer');
+            if (smgContainer && projectId === 5) {
+                smgContainer.style.display = 'flex';
+                smgContainer.style.flexDirection = 'column';
+                smgContainer.innerHTML = `
+                    <div class="project-detail-image-wrapper" style="margin-top: 2.5rem;">
+                        <img src="images/grammarly.png" alt="Grammarly" class="project-detail-center-image" style="max-width: 100%; height: auto;">
+                    </div>
+                    <p class="slideshow-caption">Locked under NDA 🔒 Please contact for additional details about this project.</p>
+                    <div class="project-detail-image-wrapper" style="margin-top: 2.5rem;">
+                        <img src="images/fizz-1.png" alt="Fizz" class="project-detail-center-image" style="max-width: 100%; height: auto;">
+                    </div>
+                    <p class="slideshow-caption">Locked under NDA 🔒 Please contact for additional details about this project.</p>
+                `;
+            }
         });
+        
+        function initTripCompassPDF() {
+            if (typeof pdfjsLib === 'undefined') {
+                setTimeout(initTripCompassPDF, 100);
+                return;
+            }
+            if (window.location.protocol === 'file:') {
+                const indicator = document.getElementById('tripSlideIndicator');
+                if (indicator) {
+                    indicator.textContent = 'Please use a local server (e.g., python -m http.server)';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                }
+                return;
+            }
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+            
+            const pdfUrl = 'images/CS221_Project_Final_Report___TripCompassSF (2).pdf';
+            const canvas = document.getElementById('tripPdfCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const prevBtn = document.getElementById('tripPrevSlide');
+            const nextBtn = document.getElementById('tripNextSlide');
+            const indicator = document.getElementById('tripSlideIndicator');
+            
+            let pdfDoc = null;
+            let currentPage = 1;
+            let totalPages = 0;
+            let renderTask = null;
+            
+            function renderPage(pageNum) {
+                if (!pdfDoc) return;
+                if (renderTask) renderTask.cancel();
+                
+                pdfDoc.getPage(pageNum).then(page => {
+                    const viewport = page.getViewport({ scale: 2.0 });
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    const renderContext = { canvasContext: ctx, viewport: viewport };
+                    renderTask = page.render(renderContext);
+                    return renderTask.promise;
+                }).then(() => {
+                    indicator.textContent = `${currentPage} / ${totalPages}`;
+                    prevBtn.disabled = currentPage <= 1;
+                    nextBtn.disabled = currentPage >= totalPages;
+                }).catch(error => {
+                    if (error.name !== 'RenderingCancelledException') console.error('Error rendering page:', error);
+                });
+            }
+            
+            if (prevBtn) prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) { currentPage--; renderPage(currentPage); }
+            });
+            if (nextBtn) nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) { currentPage++; renderPage(currentPage); }
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    if (e.key === 'ArrowLeft' && currentPage > 1) { currentPage--; renderPage(currentPage); }
+                    else if (e.key === 'ArrowRight' && currentPage < totalPages) { currentPage++; renderPage(currentPage); }
+                }
+            });
+            
+            pdfjsLib.getDocument({ url: pdfUrl, httpHeaders: {}, withCredentials: false }).promise
+                .then(pdf => {
+                    pdfDoc = pdf;
+                    totalPages = pdf.numPages;
+                    indicator.textContent = `1 / ${totalPages}`;
+                    currentPage = 1;
+                    renderPage(1);
+                })
+                .catch(error => {
+                    console.error('Error loading PDF:', error);
+                    indicator.textContent = 'Error loading report';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                });
+        }
+        
+        function initWhiskersPDF() {
+            if (typeof pdfjsLib === 'undefined') {
+                setTimeout(initWhiskersPDF, 100);
+                return;
+            }
+            if (window.location.protocol === 'file:') {
+                const indicator = document.getElementById('whiskersSlideIndicator');
+                if (indicator) {
+                    indicator.textContent = 'Please use a local server (e.g., python -m http.server)';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                }
+                return;
+            }
+            const canvas = document.getElementById('whiskersPdfCanvas');
+            if (!canvas) return;
+            
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+            const pdfUrl = 'images/Playtesting%20and%20Iteration%20History.pdf';
+            const ctx = canvas.getContext('2d');
+            const prevBtn = document.getElementById('whiskersPrevSlide');
+            const nextBtn = document.getElementById('whiskersNextSlide');
+            const indicator = document.getElementById('whiskersSlideIndicator');
+            
+            let pdfDoc = null;
+            let currentPage = 1;
+            let totalPages = 0;
+            let renderTask = null;
+            
+            function renderPage(pageNum) {
+                if (!pdfDoc) return;
+                if (renderTask) renderTask.cancel();
+                pdfDoc.getPage(pageNum).then(page => {
+                    const viewport = page.getViewport({ scale: 2.0 });
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    const renderContext = { canvasContext: ctx, viewport: viewport };
+                    renderTask = page.render(renderContext);
+                    return renderTask.promise;
+                }).then(() => {
+                    indicator.textContent = `${currentPage} / ${totalPages}`;
+                    prevBtn.disabled = currentPage <= 1;
+                    nextBtn.disabled = currentPage >= totalPages;
+                }).catch(error => {
+                    if (error.name !== 'RenderingCancelledException') console.error('Error rendering page:', error);
+                });
+            }
+            
+            if (prevBtn) prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) { currentPage--; renderPage(currentPage); }
+            });
+            if (nextBtn) nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) { currentPage++; renderPage(currentPage); }
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    if (e.key === 'ArrowLeft' && currentPage > 1) { currentPage--; renderPage(currentPage); }
+                    else if (e.key === 'ArrowRight' && currentPage < totalPages) { currentPage++; renderPage(currentPage); }
+                }
+            });
+            
+            pdfjsLib.getDocument({ url: pdfUrl, httpHeaders: {}, withCredentials: false }).promise
+                .then(pdf => {
+                    pdfDoc = pdf;
+                    totalPages = pdf.numPages;
+                    indicator.textContent = `1 / ${totalPages}`;
+                    currentPage = 1;
+                    renderPage(1);
+                })
+                .catch(error => {
+                    console.error('Error loading PDF:', error);
+                    indicator.textContent = 'Error loading PDF';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                });
+        }
+        
+        function initCakePDF() {
+            if (typeof pdfjsLib === 'undefined') {
+                setTimeout(initCakePDF, 100);
+                return;
+            }
+            if (window.location.protocol === 'file:') {
+                const indicator = document.getElementById('cakeSlideIndicator');
+                if (indicator) {
+                    indicator.textContent = 'Please use a local server (e.g., python -m http.server)';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                }
+                return;
+            }
+            const canvas = document.getElementById('cakePdfCanvas');
+            if (!canvas) return;
+            
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+            const pdfUrl = 'images/LetThemEatCake-Printable-Cards%20(1)-merged.pdf';
+            const ctx = canvas.getContext('2d');
+            const prevBtn = document.getElementById('cakePrevSlide');
+            const nextBtn = document.getElementById('cakeNextSlide');
+            const indicator = document.getElementById('cakeSlideIndicator');
+            
+            let pdfDoc = null;
+            let currentPage = 1;
+            let totalPages = 0;
+            let renderTask = null;
+            
+            function renderPage(pageNum) {
+                if (!pdfDoc) return;
+                if (renderTask) renderTask.cancel();
+                pdfDoc.getPage(pageNum).then(page => {
+                    const viewport = page.getViewport({ scale: 2.0 });
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    const renderContext = { canvasContext: ctx, viewport: viewport };
+                    renderTask = page.render(renderContext);
+                    return renderTask.promise;
+                }).then(() => {
+                    indicator.textContent = `${currentPage} / ${totalPages}`;
+                    prevBtn.disabled = currentPage <= 1;
+                    nextBtn.disabled = currentPage >= totalPages;
+                }).catch(error => {
+                    if (error.name !== 'RenderingCancelledException') console.error('Error rendering page:', error);
+                });
+            }
+            
+            if (prevBtn) prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) { currentPage--; renderPage(currentPage); }
+            });
+            if (nextBtn) nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) { currentPage++; renderPage(currentPage); }
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    if (e.key === 'ArrowLeft' && currentPage > 1) { currentPage--; renderPage(currentPage); }
+                    else if (e.key === 'ArrowRight' && currentPage < totalPages) { currentPage++; renderPage(currentPage); }
+                }
+            });
+            
+            pdfjsLib.getDocument({ url: pdfUrl, httpHeaders: {}, withCredentials: false }).promise
+                .then(pdf => {
+                    pdfDoc = pdf;
+                    totalPages = pdf.numPages;
+                    indicator.textContent = `1 / ${totalPages}`;
+                    currentPage = 1;
+                    renderPage(1);
+                })
+                .catch(error => {
+                    console.error('Error loading PDF:', error);
+                    indicator.textContent = 'Error loading PDF';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                });
+        }
     </script>
 </body>
 </html>
