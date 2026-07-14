@@ -1,13 +1,18 @@
-// World visualization data and interactions
-// Categories ordered clockwise from top: Product Management (top), Teaching & Research (right), Startups (bottom), Leadership (left)
+// Work experience data and category tab/timeline interaction
+// Order matches the tab layout: Product Management, Leadership, Teaching & Research, Startups
 const worldData = {
     categories: [
         {
             id: 'product-management',
             label: 'Product Management',
             subtitle: 'Building products that matter',
-            count: 5,
             experiences: [
+                {
+                    role: 'Product Manager',
+                    organization: 'Microsoft',
+                    timeRange: 'Jun 2026 – Present',
+                    impact: 'Lead product direction and co-build a generative UI capability that translates natural-language requests into personalized Windows experiences, including the first working prototype for custom desktop widgets.'
+                },
                 {
                     role: 'Product Manager',
                     organization: 'Microsoft',
@@ -41,68 +46,9 @@ const worldData = {
             ]
         },
         {
-            id: 'teaching-research',
-            label: 'Teaching & Research',
-            subtitle: 'Sharing knowledge & advancing fields',
-            count: 5,
-            experiences: [
-                {
-                    role: 'Teaching',
-                    organization: 'Hacking for Defense (MS&E297), Stanford University',
-                    timeRange: 'Jan 2026 - Present',
-                    impact: 'Recruit 8 cross disciplinary student teams, coordinate with government sponsors, and coach teams in Lean Startup methodology to produce high-impact national security and dual-use technology solutions.'
-                },
-                {
-                    role: 'Teaching',
-                    organization: 'Introduction to Public Speaking (ENGR103), Stanford University',
-                    timeRange: 'Apr 2025 – Present',
-                    impact: 'Coached 80+ students on narrative, persuasive, and technical communication through structured lessons, workshops, and feedback.'
-                },
-                {
-                    role: 'Research',
-                    organization: 'Department of Computer Science (PinCS Lab), Stanford University',
-                    timeRange: 'Apr 2024 – Mar 2025',
-                    impact: 'Built interactive, web based learning modules that teach science concepts using introductory computer science principles for high school students.'
-                },
-                {
-                    role: 'Research',
-                    organization: 'Department of Management Science & Engineering, Stanford University',
-                    timeRange: 'Aug 2023 – Apr 2024',
-                    impact: 'Researched the impact of hybrid workplaces on organizational culture and team dynamics.'
-                },
-                {
-                    role: 'Research',
-                    organization: 'Department of Geology, Environment, and Sustainability, Hofstra University',
-                    timeRange: 'Jul 2020 – Sep 2022',
-                    impact: 'Created a sub-county community resilience index and first-authored a published research paper at 16.'
-                }
-            ]
-        },
-        {
-            id: 'startups',
-            label: 'Startups',
-            subtitle: 'From idea to impact',
-            count: 2,
-            experiences: [
-                {
-                    role: 'Venture Scout',
-                    organization: 'GoAhead Ventures',
-                    timeRange: 'Aug 2025 – Present',
-                    impact: 'Investing in pre-seed and seed-stage founders, sourcing and evaluating early-stage startups across emerging technology domains.'
-                },
-                {
-                    role: 'Co-founder & Head of Product',
-                    organization: 'Omnyra',
-                    timeRange: 'Feb 2025 – Oct 2025',
-                    impact: 'Drove product vision, GTM, and frontend development for an AI-native biosecurity platform backed by the FBI and DIU, with 3 pilots and 150+ stakeholder interviews informing product direction.'
-                }
-            ]
-        },
-        {
             id: 'leadership',
             label: 'Leadership',
             subtitle: 'Empowering teams to excel',
-            count: 3,
             experiences: [
                 {
                     role: 'Co-founder & Vice President',
@@ -123,370 +69,132 @@ const worldData = {
                     impact: 'Led 2 PMs, 1 designer, and 2 engineering managers across two nonprofit projects, delivering two 0→1 product prototypes within a two-week sprint.'
                 }
             ]
+        },
+        {
+            id: 'teaching-research',
+            label: 'Teaching & Research',
+            subtitle: 'Sharing knowledge & advancing fields',
+            experiences: [
+                {
+                    organization: 'Inspirit AI',
+                    timeRange: 'Jul 2026 – Present',
+                    impact: 'Teach small cohorts of students foundational AI and machine learning concepts while mentoring them in building personalized, real-world AI projects.'
+                },
+                {
+                    organization: 'Stanford Research',
+                    timeRange: 'Mar 2026 – Present',
+                    impact: 'Research whether personalized LLMs can represent patients’ values and context-dependent decisions in end-of-life care, developing a 10-dimension framework for evaluating clinical deployment.'
+                },
+                {
+                    organization: 'Hacking for Defense (MS&E297), Stanford University',
+                    timeRange: 'Jan 2026 - Present',
+                    impact: 'Recruit 8 cross disciplinary student teams, coordinate with government sponsors, and coach teams in Lean Startup methodology to produce high-impact national security and dual-use technology solutions.'
+                },
+                {
+                    organization: 'Introduction to Public Speaking (ENGR103), Stanford University',
+                    timeRange: 'Apr 2025 – Present',
+                    impact: 'Coached 80+ students on narrative, persuasive, and technical communication through structured lessons, workshops, and feedback.'
+                },
+                {
+                    organization: 'Department of Computer Science (PinCS Lab), Stanford University',
+                    timeRange: 'Apr 2024 – Mar 2025',
+                    impact: 'Built interactive, web based learning modules that teach science concepts using introductory computer science principles for high school students.'
+                },
+                {
+                    organization: 'Department of Management Science & Engineering, Stanford University',
+                    timeRange: 'Aug 2023 – Apr 2024',
+                    impact: 'Researched the impact of hybrid workplaces on organizational culture and team dynamics.'
+                },
+                {
+                    organization: 'Department of Geology, Environment, and Sustainability, Hofstra University',
+                    timeRange: 'Jul 2020 – Sep 2022',
+                    impact: 'Created a sub-county community resilience index and first-authored a published research paper at 16.'
+                }
+            ]
+        },
+        {
+            id: 'startups',
+            label: 'Startups',
+            subtitle: 'From idea to impact',
+            experiences: [
+                {
+                    role: 'Venture Scout',
+                    organization: 'GoAhead Ventures',
+                    timeRange: 'Aug 2025 – Present',
+                    impact: 'Investing in pre-seed and seed-stage founders, sourcing and evaluating early-stage startups across emerging technology domains.'
+                },
+                {
+                    role: 'Co-founder & Head of Product',
+                    organization: 'Omnyra',
+                    timeRange: 'Feb 2025 – Oct 2025',
+                    impact: 'Drove product vision, GTM, and frontend development for an AI-native biosecurity platform backed by the FBI and DIU, with 3 pilots and 150+ stakeholder interviews informing product direction.'
+                }
+            ]
         }
     ]
 };
 
-// Configuration constants
-const nodeSize = 140; // Diameter of orbiting nodes
-const nodeRadius = nodeSize / 2; // Radius of orbiting nodes
-const orbitPadding = 24; // Padding between big circle edge and node center
-const angularVelocity = 0.00002; // rad/frame (gentle motion - ~0.02 rad/sec at 60fps)
+// Categories whose rows show only the organization (role is either redundant or not applicable)
+const CATEGORIES_WITHOUT_ROLE = new Set(['product-management', 'teaching-research']);
 
-// Specific angles for each category (clockwise from top: Product Management, Teaching & Research, Startups, Leadership)
-const categoryAngles = {
-    'product-management': -Math.PI / 2,   // -90° (top)
-    'teaching-research': 0,                // 0° (right)
-    'startups': Math.PI / 2,              // 90° (bottom)
-    'leadership': Math.PI                 // 180° (left)
-};
-
-// Initialize world visualization
+// Initialize the category tab / timeline browser
 document.addEventListener('DOMContentLoaded', function() {
-    const worldContainer = document.querySelector('.world-container');
-    const worldCenter = document.querySelector('.world-center');
-    const orbitingCircles = document.getElementById('orbitingCircles');
-    const timelineOverlay = document.getElementById('timelineOverlay');
-    const dimOverlay = document.getElementById('dimOverlay');
-    const closeTimeline = document.getElementById('closeTimeline');
-    
-    let selectedCategory = null;
-    let animationFrame = null;
-    let isAnimating = true;
-    let globalRotation = 0;
-    
-    // Dimensions (will be updated by ResizeObserver)
-    let containerWidth = 0;
-    let containerHeight = 0;
-    let centerX = 0;
-    let centerY = 0;
-    let worldRadius = 0;
-    let orbitRadius = 0;
-    
-    // Store node elements and their data
-    const nodes = [];
-    
-    // Create debug visualization elements
-    const debugContainer = document.createElement('div');
-    debugContainer.className = 'debug-visualization';
-    debugContainer.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5;';
-    
-    const orbitRing = document.createElement('div');
-    orbitRing.className = 'orbit-ring';
-    orbitRing.style.cssText = 'position: absolute; border: 1px dashed rgba(147, 51, 234, 0.3); border-radius: 50%; pointer-events: none;';
-    
-    debugContainer.appendChild(orbitRing);
-    worldContainer.appendChild(debugContainer);
-    
-    // Calculate dimensions and positions
-    function calculateDimensions() {
-        const rect = worldContainer.getBoundingClientRect();
-        containerWidth = rect.width;
-        containerHeight = rect.height;
-        
-        centerX = containerWidth / 2;
-        centerY = containerHeight / 2;
-        
-        // Get world (big circle) radius from its rendered size
-        const centerRect = worldCenter.getBoundingClientRect();
-        const worldWidth = centerRect.width;
-        const worldHeight = centerRect.height;
-        worldRadius = Math.min(worldWidth, worldHeight) / 2;
-        
-        // Calculate orbit radius: worldRadius + nodeRadius + padding
-        // This ensures nodes sit OUTSIDE the big circle
-        orbitRadius = worldRadius + nodeRadius + orbitPadding;
-        
-        // Ensure orbit doesn't go out of bounds
-        const maxRadius = Math.min(centerX, centerY) - nodeRadius;
-        orbitRadius = Math.min(orbitRadius, maxRadius);
-        
-        // Update debug visualization
-        orbitRing.style.width = (orbitRadius * 2) + 'px';
-        orbitRing.style.height = (orbitRadius * 2) + 'px';
-        orbitRing.style.left = (centerX - orbitRadius) + 'px';
-        orbitRing.style.top = (centerY - orbitRadius) + 'px';
+    const tabsContainer = document.getElementById('categoryTabs');
+    const panelContainer = document.getElementById('categoryPanel');
+
+    if (!tabsContainer || !panelContainer) return;
+
+    let activeCategory = worldData.categories.find(c => c.id === 'product-management') || worldData.categories[0];
+
+    function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
     }
-    
-    // Position a node based on its angle - enforces strict orbit constraint
-    function positionNode(node, angle) {
-        // Calculate node center position on orbit
-        const nodeCenterX = centerX + orbitRadius * Math.cos(angle);
-        const nodeCenterY = centerY + orbitRadius * Math.sin(angle);
-        
-        // Verify distance constraint (within 1px tolerance)
-        const distance = Math.sqrt(
-            Math.pow(nodeCenterX - centerX, 2) + 
-            Math.pow(nodeCenterY - centerY, 2)
-        );
-        
-        // Verify node is outside big circle
-        const minDistance = worldRadius + nodeRadius;
-        const isOutside = distance >= minDistance - 1; // 1px tolerance
-        
-        if (!isOutside) {
-            console.warn(`Node ${node.categoryId} is too close to world center. Distance: ${distance}, Required: ${minDistance}`);
-        }
-        
-        // Calculate top-left position for absolute positioning
-        const left = nodeCenterX - nodeRadius;
-        const top = nodeCenterY - nodeRadius;
-        
-        node.element.style.left = left + 'px';
-        node.element.style.top = top + 'px';
-        node.element.style.transform = 'translate(0, 0)'; // No transform needed since we calculate exact position
-    }
-    
-    // Create orbiting circles
-    worldData.categories.forEach((category, index) => {
-        const circle = document.createElement('div');
-        circle.className = 'orbit-circle';
-        circle.dataset.categoryId = category.id;
-        circle.style.width = nodeSize + 'px';
-        circle.style.height = nodeSize + 'px';
-        
-        const label = document.createElement('span');
-        label.className = 'circle-label';
-        label.textContent = category.label;
-        circle.appendChild(label);
-        
-        const subtitle = document.createElement('span');
-        subtitle.className = 'circle-subtitle';
-        subtitle.textContent = category.subtitle;
-        circle.appendChild(subtitle);
-        
-        orbitingCircles.appendChild(circle);
-        
-        // Get the specific angle for this category
-        const baseAngle = categoryAngles[category.id] || 0;
-        
-        // Store node data
-        const node = {
-            element: circle,
-            categoryId: category.id,
-            category: category,
-            baseAngle: baseAngle,
-            isPaused: false
-        };
-        
-        nodes.push(node);
-        
-        // Hover effect - pause motion
-        circle.addEventListener('mouseenter', function() {
-            if (!selectedCategory) {
-                circle.classList.add('hovered');
-                circle.classList.add('paused');
-                node.isPaused = true;
-            }
-        });
-        
-        circle.addEventListener('mouseleave', function() {
-            if (!selectedCategory) {
-                circle.classList.remove('hovered');
-                circle.classList.remove('paused');
-                node.isPaused = false;
-            }
-        });
-        
-        // Click effect
-        circle.addEventListener('click', function() {
-            if (selectedCategory === category.id) {
-                closeTimelineHandler();
-            } else {
-                openTimeline(category);
-            }
-        });
-    });
-    
-    // Initial positioning
-    calculateDimensions();
-    nodes.forEach(node => {
-        positionNode(node, node.baseAngle + globalRotation);
-    });
-    
-    // Orbital animation - use global rotation to maintain even spacing
-    let lastTime = performance.now();
-    function animate(currentTime) {
-        const deltaTime = currentTime - lastTime;
-        lastTime = currentTime;
-        
-        if (isAnimating) {
-            // Update global rotation angle
-            globalRotation += angularVelocity * (deltaTime / 16.67); // Normalize to 60fps
-            
-            // Keep angle in [0, 2π] range
-            if (globalRotation > 2 * Math.PI) {
-                globalRotation -= 2 * Math.PI;
-            }
-            
-            // Update each node's position based on baseAngle + globalRotation
-            nodes.forEach(node => {
-                if (!node.element.classList.contains('selected') && !node.isPaused) {
-                    const currentAngle = node.baseAngle + globalRotation;
-                    positionNode(node, currentAngle);
+
+    function renderTabs() {
+        tabsContainer.innerHTML = '';
+        worldData.categories.forEach(category => {
+            const tab = document.createElement('div');
+            tab.className = 'cattab' + (category.id === activeCategory.id ? ' active' : '');
+            tab.textContent = category.label;
+            tab.setAttribute('role', 'tab');
+            tab.setAttribute('tabindex', '0');
+            tab.setAttribute('aria-selected', category.id === activeCategory.id ? 'true' : 'false');
+            tab.addEventListener('click', () => selectCategory(category));
+            tab.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectCategory(category);
                 }
             });
-        }
-        
-        animationFrame = requestAnimationFrame(animate);
-    }
-    
-    // Start animation
-    animate(performance.now());
-    
-    // ResizeObserver for responsive positioning - recalculates orbit radius on size changes
-    const resizeObserver = new ResizeObserver(entries => {
-        calculateDimensions(); // Recalculate all dimensions including orbit radius
-        nodes.forEach(node => {
-            if (!node.element.classList.contains('selected')) {
-                // Reposition with updated orbit radius
-                positionNode(node, node.baseAngle + globalRotation);
-            }
+            tabsContainer.appendChild(tab);
         });
-    });
-    
-    resizeObserver.observe(worldContainer);
-    resizeObserver.observe(worldCenter);
-    
-    // Also handle window resize to ensure orbit adjusts
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            calculateDimensions(); // Recalculate all dimensions including orbit radius
-            nodes.forEach(node => {
-                if (!node.element.classList.contains('selected')) {
-                    positionNode(node, node.baseAngle + globalRotation);
-                }
-            });
-        }, 100); // Debounce resize events
-    });
-    
-    // Open timeline
-    function openTimeline(category) {
-        selectedCategory = category.id;
-        isAnimating = false; // Pause all animation
-        
-        // Dim background
-        dimOverlay.classList.add('active');
-        
-        // Select circle and move to center
-        const node = nodes.find(n => n.categoryId === category.id);
-        if (!node) return;
-        
-        const circle = node.element;
-        circle.classList.add('selected');
-        circle.classList.remove('paused');
-        node.isPaused = false;
-        
-        // Animate circle to center
-        const expandedSize = 200;
-        const expandedRadius = expandedSize / 2;
-        setTimeout(() => {
-            // Position center at (centerX, centerY)
-            circle.style.left = (centerX - expandedRadius) + 'px';
-            circle.style.top = (centerY - expandedRadius) + 'px';
-            circle.style.width = expandedSize + 'px';
-            circle.style.height = expandedSize + 'px';
-            circle.style.transform = 'translate(0, 0) scale(1.2)';
-        }, 10);
-        
-        // Show timeline
-        const timelineContent = document.getElementById('timelineContent');
-        
-        // Group experiences by role (Teaching vs Research)
-        const teachingExps = category.experiences.filter(exp => exp.role === 'Teaching');
-        const researchExps = category.experiences.filter(exp => exp.role === 'Research');
-        
-        let timelineHTML = `<div class="timeline-list">`;
-        
-        // If this category has Teaching/Research sections, use them
-        if (teachingExps.length > 0 || researchExps.length > 0) {
-            // Add Teaching section if there are teaching experiences
-            if (teachingExps.length > 0) {
-                timelineHTML += `<h2 class="timeline-section-header">Teaching</h2>`;
-                teachingExps.forEach((exp, index) => {
-                    timelineHTML += `
-                        <div class="timeline-item" style="animation-delay: ${index * 0.1}s">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-details">
-                                <div class="timeline-role">${exp.organization}</div>
-                                <div class="timeline-time">${exp.timeRange}</div>
-                                <div class="timeline-impact">${exp.impact}</div>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-            
-            // Add Research section if there are research experiences
-            if (researchExps.length > 0) {
-                timelineHTML += `<h2 class="timeline-section-header">Research</h2>`;
-                researchExps.forEach((exp, index) => {
-                    timelineHTML += `
-                        <div class="timeline-item" style="animation-delay: ${(teachingExps.length + index) * 0.1}s">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-details">
-                                <div class="timeline-role">${exp.organization}</div>
-                                <div class="timeline-time">${exp.timeRange}</div>
-                                <div class="timeline-impact">${exp.impact}</div>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-        } else {
-            // For other categories, show title and all experiences
-            timelineHTML += `<h2 class="timeline-title">${category.label}</h2>`;
-            category.experiences.forEach((exp, index) => {
-                // Product Management doesn't show roles, others do
-                const showRole = category.id !== 'product-management';
-                timelineHTML += `
-                    <div class="timeline-item" style="animation-delay: ${index * 0.1}s">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-details">
-                            ${showRole ? `<div class="timeline-role">${exp.role}</div><div class="timeline-org">${exp.organization}</div>` : `<div class="timeline-role">${exp.organization}</div>`}
-                            <div class="timeline-time">${exp.timeRange}</div>
-                            <div class="timeline-impact">${exp.impact}</div>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-        
-        timelineHTML += `</div>`;
-        timelineContent.innerHTML = timelineHTML;
-        
-        timelineOverlay.classList.add('active');
     }
-    
-    // Close timeline
-    function closeTimelineHandler() {
-        if (!selectedCategory) return;
-        
-        const node = nodes.find(n => n.categoryId === selectedCategory);
-        if (!node) return;
-        
-        const circle = node.element;
-        circle.classList.remove('selected');
-        circle.classList.remove('hovered');
-        circle.classList.remove('paused');
-        
-        // Reset circle position and size
-        circle.style.width = nodeSize + 'px';
-        circle.style.height = nodeSize + 'px';
-        circle.style.transform = 'translate(0, 0)';
-        
-        // Reposition to orbit
-        positionNode(node, node.baseAngle + globalRotation);
-        
-        dimOverlay.classList.remove('active');
-        timelineOverlay.classList.remove('active');
-        
-        selectedCategory = null;
-        isAnimating = true; // Resume animation
+
+    function selectCategory(category) {
+        if (category.id === activeCategory.id) return;
+        activeCategory = category;
+        renderTabs();
+        renderPanel();
     }
-    
-    closeTimeline.addEventListener('click', closeTimelineHandler);
-    dimOverlay.addEventListener('click', closeTimelineHandler);
+
+    function timelineRow(exp, showRole) {
+        const heading = showRole ? `${escapeHTML(exp.role)}, ${escapeHTML(exp.organization)}` : escapeHTML(exp.organization);
+        return `
+            <div class="work-row">
+                <div class="work-row-time">${escapeHTML(exp.timeRange)}</div>
+                <div class="work-row-body"><span class="work-row-org">${heading}</span><span class="work-row-impact"> — ${escapeHTML(exp.impact)}</span></div>
+            </div>
+        `;
+    }
+
+    function renderPanel() {
+        const showRole = !CATEGORIES_WITHOUT_ROLE.has(activeCategory.id);
+        const html = activeCategory.experiences.map(exp => timelineRow(exp, showRole)).join('');
+        panelContainer.innerHTML = html;
+    }
+
+    renderTabs();
+    renderPanel();
 });

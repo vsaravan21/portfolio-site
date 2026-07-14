@@ -5,22 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project | Varsha Saravanan</title>
     <link rel="icon" type="image/png" href="images/pink_heart.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav class="main-nav">
-        <ul class="nav-list">
-            <li><a href="index.html#home" class="nav-link">Home</a></li>
-            <li><a href="index.html#work" class="nav-link">Work</a></li>
-            <li><a href="index.html#portfolio" class="nav-link">Product Portfolio</a></li>
-            <li><a href="projects.html" class="nav-link">Projects</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
-            <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-        </ul>
+        <div class="nav-inner">
+            <span class="nav-brand">varsha saravanan</span>
+            <ul class="nav-list">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#work" class="nav-link">Work</a></li>
+                <li><a href="index.html#portfolio" class="nav-link">Product Portfolio</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
     </nav>
     
     <main class="project-detail-main">
-        <a href="projects.html" class="back-arrow">
+        <a href="index.html#projects" class="back-arrow">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -76,13 +81,12 @@
             
             // Update main image
             const mainImage = document.getElementById('projectMainImage');
-            const imageContainer = mainImage ? mainImage.closest('.project-detail-image-container') : null;
-            
+
             if (mainImage && project.image) {
                 mainImage.src = project.image;
                 mainImage.alt = project.title;
             }
-            
+
             // Update info grid
             const roleEl = document.getElementById('projectRole');
             const timelineEl = document.getElementById('projectTimeline');
@@ -313,6 +317,39 @@
                     </div>
                     <p class="slideshow-caption">Locked under NDA 🔒 Please contact for additional details about this project.</p>
                 `;
+            }
+
+            // Embed overview for "Adapting GPT"
+            const gpt2Container = document.getElementById('projectPdfContainer');
+            if (gpt2Container && projectId === 6) {
+                gpt2Container.style.display = 'flex';
+                gpt2Container.style.flexDirection = 'column';
+                gpt2Container.innerHTML = `
+                    <div class="project-detail-text-box">
+                        <p class="project-detail-text-box-content">Parameter-Efficient Adaptation of GPT-2 is an NLP research project exploring how a shared language-model backbone can be adapted across classification and generation tasks without retraining the entire model. We implemented and compared full fine-tuning with LoRA, ReFT, soft prompt tuning, and Direct Preference Optimization across sentiment analysis, paraphrase detection, and conditional sonnet generation. By evaluating accuracy, generation quality, trainable parameters, and GPU memory, we found that targeted low-parameter interventions can match or outperform full fine-tuning in some settings, while decoding and reranking choices can matter more than additional training for open-ended generation.</p>
+                    </div>
+                    <div class="project-detail-image-wrapper" style="margin-top: 1.5rem;">
+                        <img src="images/adapting-gpt2-poster.jpg" alt="Adapting GPT poster" class="project-detail-center-image" style="border-radius: 10px;">
+                    </div>
+                    <div class="pdf-slideshow" style="margin-top: 1.5rem;">
+                        <button class="slideshow-arrow slideshow-arrow-left" id="gpt2PrevSlide" aria-label="Previous slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="slideshow-viewport">
+                            <canvas id="gpt2PdfCanvas" class="slideshow-canvas"></canvas>
+                        </div>
+                        <button class="slideshow-arrow slideshow-arrow-right" id="gpt2NextSlide" aria-label="Next slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="slideshow-indicator" id="gpt2SlideIndicator">1 / 1</div>
+                    </div>
+                    <p class="slideshow-caption">Parameter-Efficient Adaptation of GPT-2 Across Classification and Generation Tasks</p>
+                `;
+                initGpt2PDF();
             }
         });
         
@@ -545,6 +582,83 @@
                 .catch(error => {
                     console.error('Error loading PDF:', error);
                     indicator.textContent = 'Error loading PDF';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                });
+        }
+
+        function initGpt2PDF() {
+            if (typeof pdfjsLib === 'undefined') {
+                setTimeout(initGpt2PDF, 100);
+                return;
+            }
+            if (window.location.protocol === 'file:') {
+                const indicator = document.getElementById('gpt2SlideIndicator');
+                if (indicator) {
+                    indicator.textContent = 'Please use a local server (e.g., python -m http.server)';
+                    indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+                }
+                return;
+            }
+            const canvas = document.getElementById('gpt2PdfCanvas');
+            if (!canvas) return;
+
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+            const pdfUrl = 'images/adapting-gpt2-paper.pdf';
+            const ctx = canvas.getContext('2d');
+            const prevBtn = document.getElementById('gpt2PrevSlide');
+            const nextBtn = document.getElementById('gpt2NextSlide');
+            const indicator = document.getElementById('gpt2SlideIndicator');
+
+            let pdfDoc = null;
+            let currentPage = 1;
+            let totalPages = 0;
+            let renderTask = null;
+
+            function renderPage(pageNum) {
+                if (!pdfDoc) return;
+                if (renderTask) renderTask.cancel();
+                pdfDoc.getPage(pageNum).then(page => {
+                    const viewport = page.getViewport({ scale: 2.0 });
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    const renderContext = { canvasContext: ctx, viewport: viewport };
+                    renderTask = page.render(renderContext);
+                    return renderTask.promise;
+                }).then(() => {
+                    indicator.textContent = `${currentPage} / ${totalPages}`;
+                    prevBtn.disabled = currentPage <= 1;
+                    nextBtn.disabled = currentPage >= totalPages;
+                }).catch(error => {
+                    if (error.name !== 'RenderingCancelledException') console.error('Error rendering page:', error);
+                });
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) { currentPage--; renderPage(currentPage); }
+            });
+            if (nextBtn) nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) { currentPage++; renderPage(currentPage); }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    if (e.key === 'ArrowLeft' && currentPage > 1) { currentPage--; renderPage(currentPage); }
+                    else if (e.key === 'ArrowRight' && currentPage < totalPages) { currentPage++; renderPage(currentPage); }
+                }
+            });
+
+            pdfjsLib.getDocument({ url: pdfUrl, httpHeaders: {}, withCredentials: false }).promise
+                .then(pdf => {
+                    pdfDoc = pdf;
+                    totalPages = pdf.numPages;
+                    indicator.textContent = `1 / ${totalPages}`;
+                    currentPage = 1;
+                    renderPage(1);
+                })
+                .catch(error => {
+                    console.error('Error loading PDF:', error);
+                    indicator.textContent = 'Error loading paper';
                     indicator.style.background = 'rgba(220, 53, 69, 0.9)';
                 });
         }

@@ -1,164 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const canvas = document.getElementById('revealCanvas');
-    const coloredImage = document.getElementById('coloredImage');
-    const ctx = canvas.getContext('2d');
-    const container = canvas.parentElement;
-    
-    let isDrawing = false;
-    let brushSize = 150;
-    let bwImage = new Image();
-    let imageLoaded = false;
-    let lastX = 0;
-    let lastY = 0;
-    
-    // Function to resize canvas and redraw
-    function resizeCanvas() {
-        if (!imageLoaded) return;
-        
-        const containerWidth = container.offsetWidth;
-        const aspectRatio = bwImage.height / bwImage.width;
-        const containerHeight = containerWidth * aspectRatio;
-        
-        // Set canvas display size
-        canvas.style.width = containerWidth + 'px';
-        canvas.style.height = containerHeight + 'px';
-        
-        // Set canvas internal size (for drawing)
-        canvas.width = bwImage.width;
-        canvas.height = bwImage.height;
-        
-        // Redraw the black and white image
-        ctx.drawImage(bwImage, 0, 0, canvas.width, canvas.height);
-        
-        // Set composite operation to erase (reveal what's underneath)
-        ctx.globalCompositeOperation = 'destination-out';
-    }
-    
-    // Load the black and white image
-    bwImage.src = 'images/black-white-image.png';
-    
-    bwImage.onload = function() {
-        imageLoaded = true;
-        resizeCanvas();
-    };
-    
-    // Handle window resize
-    window.addEventListener('resize', resizeCanvas);
-    
-    // Handle mouse down
-    canvas.addEventListener('mousedown', function(e) {
-        isDrawing = true;
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
-        lastX = (e.clientX - rect.left) * scaleX;
-        lastY = (e.clientY - rect.top) * scaleY;
-        draw(e);
-    });
-    
-    // Handle mouse move
-    canvas.addEventListener('mousemove', function(e) {
-        if (isDrawing) {
-            draw(e);
-        }
-    });
-    
-    // Handle mouse up
-    canvas.addEventListener('mouseup', function() {
-        isDrawing = false;
-    });
-    
-    // Handle mouse leave
-    canvas.addEventListener('mouseleave', function() {
-        isDrawing = false;
-    });
-    
-    // Handle touch events for mobile
-    canvas.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        isDrawing = true;
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
-        lastX = (e.touches[0].clientX - rect.left) * scaleX;
-        lastY = (e.touches[0].clientY - rect.top) * scaleY;
-        draw(e.touches[0]);
-    });
-    
-    canvas.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-        if (isDrawing) {
-            draw(e.touches[0]);
-        }
-    });
-    
-    canvas.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        isDrawing = false;
-    });
-    
-    // Draw function
-    function draw(e) {
-        if (!imageLoaded) return;
-        
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
-        
-        const x = (e.clientX - rect.left) * scaleX;
-        const y = (e.clientY - rect.top) * scaleY;
-        
-        // Adjust brush size based on scale
-        const scaledBrushSize = (brushSize * scaleX + brushSize * scaleY) / 2;
-        
-        // Draw a smooth line from last point to current point
-        ctx.beginPath();
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(x, y);
-        ctx.lineWidth = scaledBrushSize;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.stroke();
-        
-        // Also draw a circle at the end point to ensure full coverage
-        ctx.beginPath();
-        ctx.arc(x, y, scaledBrushSize / 2, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Update last point
-        lastX = x;
-        lastY = y;
-    }
-    
-    // Role rotation functionality
+    // Role rotation functionality (hero only; guarded since #roleText doesn't exist on every page)
     const roles = [
         'Impact-Driven Builder',
         'Creative Thinker',
         'Product Manager',
         'Problem Solver',
     ];
-    
+
     const roleTextElement = document.getElementById('roleText');
     let currentRoleIndex = 0;
-    
-    function updateRole() {
-        roleTextElement.style.opacity = '0';
-        roleTextElement.style.transform = 'translateY(-10px)';
-        
-        setTimeout(() => {
-            currentRoleIndex = (currentRoleIndex + 1) % roles.length;
-            roleTextElement.textContent = roles[currentRoleIndex];
-            roleTextElement.style.opacity = '1';
-            roleTextElement.style.transform = 'translateY(0)';
-        }, 300);
+
+    if (roleTextElement) {
+        const updateRole = () => {
+            roleTextElement.style.opacity = '0';
+            roleTextElement.style.transform = 'translateY(-10px)';
+
+            setTimeout(() => {
+                currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+                roleTextElement.textContent = roles[currentRoleIndex];
+                roleTextElement.style.opacity = '1';
+                roleTextElement.style.transform = 'translateY(0)';
+            }, 300);
+        };
+
+        roleTextElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        setInterval(updateRole, 2500);
     }
-    
-    // Set initial transition styles
-    roleTextElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-    
-    // Start the rotation
-    setInterval(updateRole, 2500);
-    
+
     // Navigation handling - smooth scroll to sections
     const navLinks = document.querySelectorAll('.nav-link');
     
@@ -187,6 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 targetElement = document.querySelector('.work-section');
             } else if (target === 'portfolio') {
                 targetElement = document.getElementById('portfolio') || document.querySelector('.portfolio-section');
+            } else if (target === 'projects') {
+                targetElement = document.getElementById('projects');
             } else if (target === 'contact') {
                 targetElement = document.getElementById('contact') || document.querySelector('.footer-section');
             } else {
@@ -212,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { id: 'home-section', navId: 'home' },
             { id: 'work', navId: 'work' },
             { id: 'portfolio', navId: 'portfolio' },
+            { id: 'projects', navId: 'projects' },
             { id: 'contact', navId: 'contact' }
         ];
         
