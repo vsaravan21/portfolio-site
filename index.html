@@ -78,6 +78,9 @@ a:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
 /* gradient hero */
 .g-video::-webkit-media-controls, .g-video::-webkit-media-controls-start-playback-button, .g-video::-webkit-media-controls-overlay-play-button, .g-video::-webkit-media-controls-panel { display: none !important; -webkit-appearance: none; opacity: 0; }
 .g-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3; display: block; filter: grayscale(.65) contrast(.85) brightness(1.18); }
+.g-poster { position: absolute; inset: 0; z-index: -4; background: url("assets/poster.jpg") center / cover no-repeat; filter: grayscale(.65) contrast(.85) brightness(1.18); }
+.g-video { opacity: 0; transition: opacity .8s ease; }
+.g-video.is-playing { opacity: 1; }
 /* color screen: warm paper wash + a multiply of the site palette so the footage matches the rest of the page */
 .g-tint { position: absolute; inset: 0; z-index: -2; pointer-events: none;
   background:
@@ -170,7 +173,7 @@ a:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
 <body>
 
 <header class="g-hero">
-  <video class="g-video" id="gvideo" src="assets/hero.mp4" poster="assets/poster.jpg" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" tabindex="-1" aria-hidden="true"></video><span class="g-tint" aria-hidden="true"></span><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <span class="g-poster" aria-hidden="true"></span><video class="g-video" id="gvideo" src="assets/hero.mp4" poster="assets/poster.jpg" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" tabindex="-1" aria-hidden="true"></video><span class="g-tint" aria-hidden="true"></span><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
   <nav class="g-top wrap" aria-label="Main">
     <span class="g-brand">varsha <i>saravanan</i></span>
     <ul>
@@ -333,6 +336,9 @@ a:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
   const evs = ['touchstart', 'pointerdown', 'click', 'keydown', 'scroll', 'wheel'];
   const kick = () => { const p = v.play(); if (p && p.then) p.then(off, () => {}); };
   const off = () => evs.forEach(e => removeEventListener(e, kick, true));
+  const show = () => v.classList.add('is-playing');
+  v.addEventListener('playing', show);
+  v.addEventListener('timeupdate', () => { if (v.currentTime > 0) show(); });
   const p = v.play();
   if (p && p.then) p.then(off, () => evs.forEach(e => addEventListener(e, kick, { capture: true, passive: true })));
   document.addEventListener('visibilitychange', () => { if (!document.hidden && v.paused) kick(); });
