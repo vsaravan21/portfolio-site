@@ -299,7 +299,7 @@ a:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
     const step = () => {
       st.n++;
       show(t, st.n, true);
-      if (st.n < t.length) st.timer = setTimeout(step, 70);
+      if (st.n < t.length) st.timer = setTimeout(step, cards[i].id === 'contact' ? 32 : 70);
       else { st.timer = null; setTimeout(() => { if (st.n >= t.length) show(t, st.n, false); }, 1600); }
     };
     st.timer = setTimeout(step, 120);
