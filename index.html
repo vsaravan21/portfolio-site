@@ -76,6 +76,7 @@ a:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
 .bridge svg { width: 34px; height: 44px; flex: none; }
 
 /* gradient hero */
+.g-video::-webkit-media-controls, .g-video::-webkit-media-controls-start-playback-button, .g-video::-webkit-media-controls-overlay-play-button, .g-video::-webkit-media-controls-panel { display: none !important; -webkit-appearance: none; opacity: 0; }
 .g-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3; display: block; filter: grayscale(.65) contrast(.85) brightness(1.18); }
 /* color screen: warm paper wash + a multiply of the site palette so the footage matches the rest of the page */
 .g-tint { position: absolute; inset: 0; z-index: -2; pointer-events: none;
@@ -169,7 +170,7 @@ a:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
 <body>
 
 <header class="g-hero">
-  <video class="g-video" id="gvideo" src="assets/hero.mp4" poster="assets/poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video><span class="g-tint" aria-hidden="true"></span><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <video class="g-video" id="gvideo" src="assets/hero.mp4" poster="assets/poster.jpg" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" tabindex="-1" aria-hidden="true"></video><span class="g-tint" aria-hidden="true"></span><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
   <nav class="g-top wrap" aria-label="Main">
     <span class="g-brand">varsha <i>saravanan</i></span>
     <ul>
@@ -319,6 +320,22 @@ a:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { frame(); ticking = false; }); } }, { passive: true });
   addEventListener('resize', frame);
   frame();
+})();
+</script>
+<script>
+// Safari can refuse autoplay (Low Power Mode, or its per-site Auto-Play setting).
+// Keep the poster showing, never show its play button, and start the clouds on the first touch, click, scroll or key.
+(function () {
+  const v = document.getElementById('gvideo');
+  if (!v) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); return; }
+  v.muted = true; v.defaultMuted = true; v.setAttribute('muted', '');
+  const evs = ['touchstart', 'pointerdown', 'click', 'keydown', 'scroll', 'wheel'];
+  const kick = () => { const p = v.play(); if (p && p.then) p.then(off, () => {}); };
+  const off = () => evs.forEach(e => removeEventListener(e, kick, true));
+  const p = v.play();
+  if (p && p.then) p.then(off, () => evs.forEach(e => addEventListener(e, kick, { capture: true, passive: true })));
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && v.paused) kick(); });
 })();
 </script>
 </body>
