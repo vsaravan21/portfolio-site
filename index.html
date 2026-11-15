@@ -364,5 +364,45 @@ a:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
   document.addEventListener('visibilitychange', () => { if (!document.hidden && v.paused) kick(); });
 })();
 </script>
+<script>
+// Nav links glide to each card. Cards are sticky, so measure where each one sits in the normal flow
+// and stop exactly where it settles into the stack.
+(function () {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  function targetY(el) {
+    const prev = el.style.position;
+    el.style.position = 'static';
+    const y = el.getBoundingClientRect().top + scrollY;
+    el.style.position = prev;
+    const stick = parseFloat(getComputedStyle(el).top) || 0;
+    return Math.max(0, Math.round(y - stick));
+  }
+  let raf = 0;
+  function glide(to) {
+    cancelAnimationFrame(raf);
+    const from = scrollY, dist = to - from;
+    if (reduce || Math.abs(dist) < 2) { scrollTo(0, to); return; }
+    const dur = Math.min(1400, Math.max(600, Math.abs(dist) * 0.45));
+    const t0 = performance.now();
+    const stop = () => cancelAnimationFrame(raf);
+    addEventListener('wheel', stop, { once: true, passive: true });
+    addEventListener('touchstart', stop, { once: true, passive: true });
+    const step = now => {
+      const t = Math.min(1, (now - t0) / dur);
+      scrollTo(0, from + dist * ease(t));
+      if (t < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const el = document.getElementById(a.getAttribute('href').slice(1));
+    if (!el) return;
+    e.preventDefault();
+    glide(targetY(el));
+    history.replaceState(null, '', a.getAttribute('href'));
+  }));
+})();
+</script>
 </body>
 </html>
